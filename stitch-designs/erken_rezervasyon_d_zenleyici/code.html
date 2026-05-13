@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#006399",
+                    "tertiary": "#864a00",
+                    "primary-fixed": "#cde5ff",
+                    "on-secondary-fixed": "#001f27",
+                    "error-container": "#ffdad6",
+                    "on-background": "#181c20",
+                    "surface-container": "#ebeef4",
+                    "primary": "#005d90",
+                    "on-tertiary-fixed": "#2e1600",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#004b74",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-high": "#e6e8ee",
+                    "on-primary-fixed": "#001d32",
+                    "secondary-fixed-dim": "#4cd6fb",
+                    "secondary-fixed": "#b3ebff",
+                    "primary-fixed-dim": "#94ccff",
+                    "tertiary-fixed-dim": "#ffb877",
+                    "primary-container": "#0077b6",
+                    "surface-variant": "#e0e2e8",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#50d9fe",
+                    "on-error-container": "#93000a",
+                    "secondary": "#00677d",
+                    "outline-variant": "#bfc7d1",
+                    "on-primary-container": "#f3f7ff",
+                    "on-secondary": "#ffffff",
+                    "inverse-on-surface": "#eef1f6",
+                    "on-secondary-fixed-variant": "#004e5f",
+                    "tertiary-container": "#a95f00",
+                    "on-tertiary-container": "#fff6f1",
+                    "outline": "#707881",
+                    "surface-container-low": "#f1f4f9",
+                    "surface-container-highest": "#e0e2e8",
+                    "background": "#f7f9ff",
+                    "tertiary-fixed": "#ffdcc0",
+                    "inverse-surface": "#2d3135",
+                    "on-tertiary-fixed-variant": "#6c3a00",
+                    "on-surface": "#181c20",
+                    "surface-bright": "#f7f9ff",
+                    "on-secondary-container": "#005c70",
+                    "inverse-primary": "#94ccff",
+                    "on-error": "#ffffff",
+                    "surface": "#f7f9ff",
+                    "on-surface-variant": "#404850",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#d7dae0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "container-max-width": "1200px",
+                    "base": "8px",
+                    "gutter": "24px",
+                    "section-gap-mobile": "48px",
+                    "section-gap-desktop": "80px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f7f9ff;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- SideNavBar Component -->
+<nav class="h-screen w-64 fixed left-0 top-0 bg-surface-container dark:bg-surface-container-highest shadow-sm dark:shadow-none flex flex-col border-r border-outline-variant dark:border-outline z-50">
+<div class="p-6">
+<h1 class="font-display-lg text-headline-md text-primary dark:text-primary-fixed-dim tracking-tight">Arsi Blue Beach</h1>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">Yönetim Paneli</p>
+</div>
+<div class="flex-1 mt-4">
+<a class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Panel</span>
+</a>
+<a class="bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md">Rezervasyonlar</span>
+</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="bed">bed</span>
+<span class="font-label-md text-label-md">Odalar</span>
+</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Misafirler</span>
+</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-md text-label-md">Finans</span>
+</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Ayarlar</span>
+</a>
+</div>
+<div class="p-4 mt-auto">
+<button class="w-full bg-primary text-on-primary py-3 px-4 rounded-xl font-label-md flex items-center justify-center gap-2 shadow-md transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                Yeni Rezervasyon
+            </button>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<main class="ml-64 min-h-screen flex flex-col">
+<!-- TopAppBar Component -->
+<header class="docked full-width top-0 h-16 bg-surface dark:bg-on-surface flex justify-between items-center px-gutter border-b border-outline-variant dark:border-outline z-40 sticky top-0">
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 w-64 focus:ring-2 focus:ring-primary outline-none text-body-md" placeholder="Panelde ara..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-full p-2 transition-all duration-200">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+<button class="hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-full p-2 transition-all duration-200">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="help">help</span>
+</button>
+<button class="hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-full p-2 transition-all duration-200">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="dark_mode">dark_mode</span>
+</button>
+<div class="h-8 w-px bg-outline-variant mx-2"></div>
+<div class="flex items-center gap-3 pl-2">
+<div class="text-right hidden lg:block">
+<p class="font-label-md text-on-surface leading-none">Admin Panel</p>
+<p class="text-xs text-on-surface-variant">Yönetici</p>
+</div>
+<img alt="Yönetici Profil Resmi" class="w-10 h-10 rounded-full object-cover border-2 border-primary-container" data-alt="A professional headshot of a middle-aged male hotel manager with a friendly expression. He is wearing a crisp white shirt and a dark blue blazer. The background is a blurred high-end hotel lobby with warm ambient lighting. The overall aesthetic is polished, trustworthy, and corporate modern, consistent with a luxury Mediterranean resort management style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATj9H0XCwyMAJrLbDT_YjAH61SGxrFBVvvp8Zpnc6RJc4JfIauAUH1EkV5PtFUT19KjqPg3VfAMb4g6HNTSCT5_ZUFoLRGil69Z8MsGQ37pUHXHXQ5PPuOZHlJ381w8v-SsWDdiwCJuihZnshzJPmhc7Yxu0yR79Xt4fQNrV9M1B63z39yX_i76Dj-vKYLq7andkj8hl8YUvaDgeSZVuXBG8z24nHEiqYH3br2DJ-KFGz3Lh1oh8KCmYVbW_ZJqeQ0KS_G63JCI-6g"/>
+</div>
+</div>
+</header>
+<!-- Page Editor Canvas -->
+<div class="flex flex-1 overflow-hidden">
+<!-- Editor Sidebar (Sections) -->
+<aside class="w-72 bg-surface border-r border-outline-variant flex flex-col p-6 space-y-6">
+<div>
+<h2 class="font-headline-md text-primary mb-1">Sayfa Editörü</h2>
+<p class="text-xs text-on-surface-variant font-medium uppercase tracking-wider">Erken Rezervasyon Kampanyası</p>
+</div>
+<div class="space-y-2">
+<button class="w-full flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="image">image</span>
+<span class="font-label-md text-on-surface">Promo Hero</span>
+</div>
+<span class="material-symbols-outlined text-outline text-sm opacity-0 group-hover:opacity-100" data-icon="drag_indicator">drag_indicator</span>
+</button>
+<button class="w-full flex items-center justify-between p-3 rounded-lg bg-primary-container text-on-primary-container shadow-sm">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined" data-icon="percent">percent</span>
+<span class="font-label-md">İndirim Kademeleri</span>
+</div>
+<span class="material-symbols-outlined text-sm" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+<button class="w-full flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="hotel">hotel</span>
+<span class="font-label-md text-on-surface">Öne Çıkan Odalar</span>
+</div>
+<span class="material-symbols-outlined text-outline text-sm opacity-0 group-hover:opacity-100" data-icon="drag_indicator">drag_indicator</span>
+</button>
+<button class="w-full flex items-center justify-between p-3 rounded-lg hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="gavel">gavel</span>
+<span class="font-label-md text-on-surface">Şartlar &amp; Koşullar</span>
+</div>
+<span class="material-symbols-outlined text-outline text-sm opacity-0 group-hover:opacity-100" data-icon="drag_indicator">drag_indicator</span>
+</button>
+</div>
+<div class="mt-auto pt-6 border-t border-outline-variant">
+<button class="w-full border-2 border-primary text-primary font-label-md py-2 rounded-lg hover:bg-primary-container/10 transition-colors">
+                        Önizleme Linki
+                    </button>
+<button class="w-full bg-primary text-on-primary font-label-md py-3 rounded-lg mt-3 shadow-lg shadow-primary/20">
+                        Değişiklikleri Yayınla
+                    </button>
+</div>
+</aside>
+<!-- Editor Main Area -->
+<div class="flex-1 bg-surface-container-lowest p-8 overflow-y-auto">
+<div class="max-w-4xl mx-auto">
+<div class="mb-8 flex items-center justify-between">
+<div>
+<h3 class="font-headline-lg text-on-surface">İndirim Kademelerini Düzenle</h3>
+<p class="text-body-md text-on-surface-variant">Rezervasyon tarihlerine göre otomatik indirim oranlarını belirleyin.</p>
+</div>
+<button class="flex items-center gap-2 bg-surface-container-high text-on-surface px-4 py-2 rounded-full font-label-md hover:bg-outline-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                            Yeni Kademe Ekle
+                        </button>
+</div>
+<!-- Discount Form Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Configuration Panel -->
+<div class="space-y-6">
+<!-- Tier 1 -->
+<div class="bg-white p-6 rounded-2xl border border-outline-variant shadow-sm relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div class="flex justify-between items-start mb-6">
+<h4 class="font-headline-md text-primary">Kademe #1: Kış Fırsatı</h4>
+<button class="text-error hover:bg-error-container/20 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+<div class="space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="font-label-md text-on-surface-variant block">Başlangıç Tarihi</label>
+<div class="relative">
+<input class="w-full p-3 bg-surface-container-low border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary outline-none" type="date" value="2024-01-01"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-on-surface-variant block">Bitiş Tarihi</label>
+<div class="relative">
+<input class="w-full p-3 bg-surface-container-low border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary outline-none" type="date" value="2024-02-28"/>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-on-surface-variant block">İndirim Oranı</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-primary">%</span>
+<input class="w-full p-3 pl-10 bg-surface-container-low border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary outline-none font-bold text-xl" type="number" value="25"/>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-2">
+<input checked="" class="w-5 h-5 rounded text-primary border-outline-variant focus:ring-primary" id="active-1" type="checkbox"/>
+<label class="text-body-md text-on-surface" for="active-1">Bu kademeyi aktif et</label>
+</div>
+</div>
+</div>
+<!-- Tier 2 -->
+<div class="bg-white p-6 rounded-2xl border border-outline-variant shadow-sm opacity-70 grayscale-[0.5] hover:opacity-100 hover:grayscale-0 transition-all">
+<div class="flex justify-between items-start mb-6">
+<h4 class="font-headline-md text-on-surface">Kademe #2: Bahar Tatili</h4>
+<button class="text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+<div class="space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="font-label-md text-on-surface-variant block">Başlangıç Tarihi</label>
+<input class="w-full p-3 bg-surface-container-low border border-outline-variant rounded-xl outline-none" type="date" value="2024-03-01"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-on-surface-variant block">Bitiş Tarihi</label>
+<input class="w-full p-3 bg-surface-container-low border border-outline-variant rounded-xl outline-none" type="date" value="2024-04-30"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-on-surface-variant block">İndirim Oranı</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-outline">%</span>
+<input class="w-full p-3 pl-10 bg-surface-container-low border border-outline-variant rounded-xl outline-none font-bold text-xl" type="number" value="15"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Visual Preview Panel -->
+<div class="space-y-6">
+<div class="bg-primary/5 rounded-3xl p-8 border-2 border-dashed border-primary/20 sticky top-8">
+<h5 class="font-label-md text-primary uppercase tracking-widest mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span>
+                                    Canlı Önizleme
+                                </h5>
+<!-- Room Card Preview -->
+<div class="bg-white rounded-2xl shadow-xl overflow-hidden max-w-sm mx-auto">
+<div class="relative h-48">
+<img alt="Room Preview" class="w-full h-full object-cover" data-alt="A luxurious hotel room overlooking the Mediterranean Sea at sunset. The room features high-end contemporary furniture in soft beige and white tones. Large floor-to-ceiling windows open onto a balcony with a clear view of the Alanya coastline. The lighting is warm and golden, highlighting the premium textures of the linens and wood finishes. The overall mood is serene, upscale, and inviting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsH0CEF8YTSjtYzJjAM04slWJASFKFq5rc6ybokFm1_oi6kcerJP3sSrA_LVJbZvs8wlaQrYKIDm_rouxXFtIdW-iAPzY1dwpCwclXUfN60kgraonulIl52cmYyB7HCSUjthiuminyDG6ZJzFtBphEvzsPr5dCEYng5u6J71yqmexNklK2D8juHDge3up2yg-eQYgR2ufnkIC_5-J1BamHIYMM5mvUdGXs4bWa7HE1lxihiGRZy2hAvse9T1FFFANF2aF51sSeJ57O"/>
+<!-- The Active Discount Badge -->
+<div class="absolute top-4 left-4 bg-tertiary-container text-on-tertiary-container px-4 py-2 rounded-full font-bold shadow-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-lg" data-icon="bolt">bolt</span>
+                                            %25 İNDİRİM
+                                        </div>
+<div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg text-primary font-bold text-sm">
+                                            Erken Rezervasyon
+                                        </div>
+</div>
+<div class="p-6">
+<h6 class="font-headline-md text-on-surface mb-2">Deluxe Sea View Room</h6>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-tertiary text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-outline-variant text-sm" data-icon="star">star</span>
+<span class="text-xs text-on-surface-variant">(128 Değerlendirme)</span>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-xs text-on-surface-variant line-through">4.200 TL</p>
+<p class="text-2xl font-bold text-primary">3.150 TL <span class="text-xs font-normal text-on-surface-variant">/ gece</span></p>
+</div>
+<button class="bg-primary text-on-primary p-3 rounded-xl transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-8 bg-surface-container-highest/50 p-4 rounded-xl border border-outline-variant/30">
+<p class="text-sm text-on-surface-variant italic">
+<span class="font-bold text-primary">Not:</span> Seçilen kademe renkleri sitenin global temasından (Sand and Sea) çekilmektedir. Badge rengi "Tertiary-Container" tonunda vurgulanacaktır.
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (Contextual) -->
+<button class="fixed bottom-8 right-8 bg-secondary-container text-on-secondary-container h-16 w-16 rounded-2xl shadow-2xl flex items-center justify-center transition-all hover:scale-110 active:scale-95 group z-50">
+<span class="material-symbols-outlined text-3xl group-hover:rotate-12 transition-transform" data-icon="save">save</span>
+<span class="absolute right-20 bg-on-secondary-fixed text-on-secondary-fixed-variant px-3 py-1 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Değişiklikleri Kaydet</span>
+</button>
+</body></html>

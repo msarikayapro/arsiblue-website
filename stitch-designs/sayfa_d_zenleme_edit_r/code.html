@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#001d32",
+                        "primary-container": "#0077b6",
+                        "primary-fixed": "#cde5ff",
+                        "on-secondary-fixed": "#001f27",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#00677d",
+                        "on-surface": "#181c20",
+                        "secondary-fixed": "#b3ebff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#f3f7ff",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#a95f00",
+                        "surface-bright": "#f7f9ff",
+                        "outline": "#707881",
+                        "inverse-surface": "#2d3135",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffdcc0",
+                        "background": "#f7f9ff",
+                        "primary": "#005d90",
+                        "surface-dim": "#d7dae0",
+                        "primary-fixed-dim": "#94ccff",
+                        "on-surface-variant": "#404850",
+                        "secondary-container": "#50d9fe",
+                        "on-secondary-fixed-variant": "#004e5f",
+                        "secondary-fixed-dim": "#4cd6fb",
+                        "inverse-primary": "#94ccff",
+                        "surface-tint": "#006399",
+                        "surface-container-highest": "#e0e2e8",
+                        "surface-container": "#ebeef4",
+                        "tertiary": "#864a00",
+                        "on-secondary-container": "#005c70",
+                        "inverse-on-surface": "#eef1f6",
+                        "surface-variant": "#e0e2e8",
+                        "surface": "#f7f9ff",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f1f4f9",
+                        "on-tertiary-container": "#fff6f1",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb877",
+                        "outline-variant": "#bfc7d1",
+                        "surface-container-high": "#e6e8ee",
+                        "on-tertiary-fixed": "#2e1600",
+                        "on-background": "#181c20",
+                        "on-tertiary-fixed-variant": "#6c3a00",
+                        "on-primary-fixed-variant": "#004b74"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "section-gap-mobile": "48px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "section-gap-desktop": "80px",
+                        "container-max-width": "1200px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #bfc7d1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #707881; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md">
+<!-- Side Navigation -->
+<aside class="flex flex-col h-full border-r border-outline-variant dark:border-outline bg-surface-container dark:bg-surface-container-highest h-screen w-64 fixed left-0 top-0 z-50">
+<div class="px-6 py-8">
+<h1 class="font-display-lg text-headline-md text-primary dark:text-primary-fixed-dim">Arsi Blue Beach</h1>
+<p class="text-on-surface-variant font-label-md text-sm mt-1">Yönetim Paneli</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Panel</span>
+</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-md text-label-md">Rezervasyonlar</span>
+</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">bed</span>
+<span class="font-label-md text-label-md">Odalar</span>
+</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Misafirler</span>
+</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Finans</span>
+</a>
+<a class="bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-md text-label-md">Ayarlar</span>
+</a>
+</nav>
+<div class="p-4 border-t border-outline-variant">
+<button class="w-full bg-primary text-on-primary py-3 px-4 rounded-xl font-label-md flex items-center justify-center gap-2 transition-all duration-200 active:scale-95 shadow-sm">
+<span class="material-symbols-outlined">add</span>
+                Yeni Rezervasyon
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex flex-col min-h-screen">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center px-gutter h-16 bg-surface dark:bg-on-surface border-b border-outline-variant dark:border-outline sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full w-64 focus:ring-2 focus:ring-primary text-sm" placeholder="İçerik ara..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-full p-2 transition-all duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-full p-2 transition-all duration-200">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-full p-2 transition-all duration-200">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<div class="h-8 w-px bg-outline-variant mx-2"></div>
+<div class="flex items-center gap-3">
+<img alt="Profil" class="w-8 h-8 rounded-full object-cover" data-alt="A professional headshot of a middle-aged male administrator with a confident smile, wearing a sharp navy blue blazer against a clean, softly lit office background. The lighting is bright and warm, reflecting a premium resort environment. The overall aesthetic is clean, corporate, and trustworthy, following the Mediterranean serenity theme with professional clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKUPErVUaIepLNC-V2DLHyMnTnJqK5p-JVCZMKvIoGuDtSM67dwig5EGEzRXCOJTa6TPfNUvQQtHmv-JhSLUJumojHhXD2NY7DLuk5w4BcA-1MYzqrlAxy4KFJbWQzifI3YdxO5b7lKAU9ggkOHbEYnYxOmz96PYoVPTBjfIJ7m8OvR1kIV1N4n3n7twONuU9CTc-pOoj3r0tdRII6PxHA7B8hajL_1rIEuSWMRWjiRPgQHSZQy4z1lt7_JdaPNX4KYfWtHRxLTJtk"/>
+<span class="font-label-md text-on-surface">Admin</span>
+</div>
+</div>
+</header>
+<!-- Page Header -->
+<div class="px-gutter py-8 bg-surface-container-lowest">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container rounded-full transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Ana Sayfayı Düzenle</h2>
+<p class="text-on-surface-variant text-sm">Son güncelleme: 2 saat önce, Admin tarafından</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-2.5 rounded-full border border-outline text-primary font-label-md hover:bg-primary-fixed transition-colors">
+                        Taslağı Kaydet
+                    </button>
+<button class="px-6 py-2.5 rounded-full bg-primary text-on-primary font-label-md shadow-sm hover:shadow-md transition-all active:scale-95">
+                        Yayınla
+                    </button>
+</div>
+</div>
+</div>
+<!-- Editor Layout -->
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar: Page Structure -->
+<aside class="w-80 bg-surface-container-low border-r border-outline-variant p-6 overflow-y-auto">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-label-md text-on-surface uppercase tracking-wider text-xs">Sayfa Yapısı</h3>
+<button class="p-1 text-primary hover:bg-primary-fixed rounded">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+</button>
+</div>
+<div class="space-y-3">
+<div class="group flex items-center gap-3 p-3 bg-surface-container-lowest rounded-xl border border-primary shadow-sm cursor-pointer">
+<span class="material-symbols-outlined text-primary">view_quilt</span>
+<span class="flex-1 font-label-md text-sm">Hero Bölümü</span>
+<span class="material-symbols-outlined text-outline text-sm opacity-0 group-hover:opacity-100">drag_indicator</span>
+</div>
+<div class="group flex items-center gap-3 p-3 bg-surface-container-lowest rounded-xl border border-outline-variant hover:border-primary-fixed transition-all cursor-pointer">
+<span class="material-symbols-outlined text-on-surface-variant">bed</span>
+<span class="flex-1 font-label-md text-sm">Odalar Listesi</span>
+<span class="material-symbols-outlined text-outline text-sm opacity-0 group-hover:opacity-100">drag_indicator</span>
+</div>
+<div class="group flex items-center gap-3 p-3 bg-surface-container-lowest rounded-xl border border-outline-variant hover:border-primary-fixed transition-all cursor-pointer">
+<span class="material-symbols-outlined text-on-surface-variant">spa</span>
+<span class="flex-1 font-label-md text-sm">Olanaklar</span>
+<span class="material-symbols-outlined text-outline text-sm opacity-0 group-hover:opacity-100">drag_indicator</span>
+</div>
+<div class="group flex items-center gap-3 p-3 bg-surface-container-lowest rounded-xl border border-outline-variant hover:border-primary-fixed transition-all cursor-pointer">
+<span class="material-symbols-outlined text-on-surface-variant">reviews</span>
+<span class="flex-1 font-label-md text-sm">Misafir Yorumları</span>
+<span class="material-symbols-outlined text-outline text-sm opacity-0 group-hover:opacity-100">drag_indicator</span>
+</div>
+<div class="group flex items-center gap-3 p-3 bg-surface-container-lowest rounded-xl border border-outline-variant hover:border-primary-fixed transition-all cursor-pointer">
+<span class="material-symbols-outlined text-on-surface-variant">photo_library</span>
+<span class="flex-1 font-label-md text-sm">Galeri Akışı</span>
+<span class="material-symbols-outlined text-outline text-sm opacity-0 group-hover:opacity-100">drag_indicator</span>
+</div>
+</div>
+<div class="mt-8 p-4 bg-primary-fixed rounded-2xl border border-primary-container">
+<p class="text-on-primary-fixed-variant text-xs font-semibold mb-2">İPUCU</p>
+<p class="text-on-primary-fixed-variant text-xs leading-relaxed">Bölümleri sürükleyerek sayfa sıralamasını değiştirebilirsiniz.</p>
+</div>
+</aside>
+<!-- Main Editor Area -->
+<section class="flex-1 bg-surface-bright overflow-y-auto p-gutter">
+<div class="max-w-4xl mx-auto space-y-8">
+<!-- Section Editor: Hero -->
+<div class="bg-surface-container-lowest rounded-3xl p-8 shadow-sm border border-outline-variant">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-full flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined">layers</span>
+</div>
+<h3 class="font-headline-md text-on-surface">Hero Bölümü Düzenle</h3>
+</div>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-container rounded-full text-on-surface-variant">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+<button class="p-2 hover:bg-surface-container rounded-full text-error">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-6">
+<div>
+<label class="block text-sm font-label-md text-on-surface-variant mb-2">Ana Başlık</label>
+<input class="w-full px-4 py-3 rounded-xl bg-surface-container-low border-outline-variant focus:border-primary focus:ring-0 text-on-surface transition-all" type="text" value="Akdeniz'in Kalbinde Rüya Gibi Bir Tatil"/>
+</div>
+<div>
+<label class="block text-sm font-label-md text-on-surface-variant mb-2">Alt Başlık</label>
+<textarea class="w-full px-4 py-3 rounded-xl bg-surface-container-low border-outline-variant focus:border-primary focus:ring-0 text-on-surface transition-all" rows="3">Arsi Blue Beach, Alanya'nın kristal sularıyla buluşan eşsiz konumu ve lüks hizmet anlayışıyla sizi bekliyor.</textarea>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-label-md text-on-surface-variant mb-2">Buton Metni</label>
+<input class="w-full px-4 py-3 rounded-xl bg-surface-container-low border-outline-variant focus:border-primary focus:ring-0 text-sm" type="text" value="Hemen Keşfet"/>
+</div>
+<div>
+<label class="block text-sm font-label-md text-on-surface-variant mb-2">Buton Linki</label>
+<input class="w-full px-4 py-3 rounded-xl bg-surface-container-low border-outline-variant focus:border-primary focus:ring-0 text-sm" type="text" value="/odalarimiz"/>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<label class="block text-sm font-label-md text-on-surface-variant">Arka Plan Görseli</label>
+<div class="relative group aspect-video rounded-2xl overflow-hidden border-2 border-dashed border-outline-variant bg-surface-container flex flex-col items-center justify-center cursor-pointer hover:border-primary transition-all">
+<img alt="Hero Arkaplan" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A breathtaking cinematic wide-angle photograph of a luxury Mediterranean resort at sunrise. The image captures a crystal-clear infinity pool merging with the turquoise sea under a soft orange and pastel pink sky. High-end sun loungers and palm trees frame the scene, evoking a sense of ultimate relaxation and premium quality. The lighting is warm and diffused, perfectly aligning with the Mediterranean serenity brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiY5FFXL5UDGlB7VTZ5-gVihBqMqhk298KkwfWqjPKxrxt_YSbiAW7aY9a1KeRVMenYsIhDoK26IqsCLWrPsFjgGds8_Nue8xRB137I0D-nPJAqJyMPHNZT0tiVEjmACxy8VYH-Hpj-LFQrGUu3mDI1n4aDEsPiKb05vzA4uRHsFpW2JgT2pEMlM6ksgVOy18PyGrWUEoSSNtjQH_EkJjJELUQoBqjU_e9n3bL_KVlLhRWScv6ACNOrTCkyir9Ci-e9UKE7kV-4UBX"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white">
+<span class="material-symbols-outlined text-3xl mb-2">photo_camera</span>
+<span class="font-label-md">Görseli Değiştir</span>
+</div>
+</div>
+<p class="text-[11px] text-on-surface-variant italic">Önerilen boyut: 1920x1080px. Maks: 2MB.</p>
+</div>
+</div>
+</div>
+<!-- Section Editor: Gallery -->
+<div class="bg-surface-container-lowest rounded-3xl p-8 shadow-sm border border-outline-variant">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-secondary-container rounded-full flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">collections</span>
+</div>
+<h3 class="font-headline-md text-on-surface">Galeri Akışı</h3>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container rounded-full text-sm font-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+                                Fotoğraf Ekle
+                            </button>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+<div class="relative group aspect-square rounded-2xl overflow-hidden">
+<img alt="Gallery 1" class="w-full h-full object-cover" data-alt="A detailed close-up of a luxury resort room interior, featuring crisp white linen on a large bed with turquoise accent pillows. Sunlight streams through a sheer white curtain, highlighting the high-quality textures and soft cream-colored walls. The atmosphere is peaceful and serene, reflecting a modern 4-star hospitality experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCujPzqvHZxXRg4tpRvjRnIJM6miYa_q_SK93cPmsbeGTgB4fAERp2qWy4b_82AfbUfhCUiP_V-eFmT57GoJ8bsINLiirQbYN6_xhPggvYchuryv3z9bbb46ysz32YFwasjUFgLHjgnYKZf_2OzdEUe--Z7KybVP6ZHaovA2OkeOKFIYF4x9OYFqJsQr2JgrjSSXdF1tMb_mCqwJJi2YOah6EN3QxYZGePH9v2ZhehL2eGtddw9bb6OWUlJAlr34TUApZWWBShsQNFY"/>
+<button class="absolute top-2 right-2 p-1.5 bg-white/90 rounded-full text-error shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+<div class="relative group aspect-square rounded-2xl overflow-hidden">
+<img alt="Gallery 2" class="w-full h-full object-cover" data-alt="A vibrant wide shot of a Mediterranean resort's outdoor restaurant area during late afternoon. Tropical plants and colorful flowers frame elegant wooden tables set with fine glassware. The sea is visible in the distance under a clear blue sky, creating a feeling of sun-drenched professionalism and relaxation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHbDRo67ndf1SfLCfRO-AGrj5n8IM5oHmo4FNaEGMCQix8l_6DkRlRHzrki3SEAQ8kZoHkXRorNv-MqbfCTQYKPhHWB7dZBoYflgb4U4Kk1lZIekr8IDN3QC62PNxnAgDWTg8MvN-jU2PxYjfx14KojohWEEAIlT9KKqH6uPLAgDYcRwS_6-SLBw7-x11aKQ-Jfo9Gh_ytZA2nk896mvqnK9ar-S3oi3rCmygsvW-Rsk0DqomplJ6bZTv7QSAEe656Pm5WI1Ygm_W5"/>
+<button class="absolute top-2 right-2 p-1.5 bg-white/90 rounded-full text-error shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+<div class="relative group aspect-square rounded-2xl overflow-hidden">
+<img alt="Gallery 3" class="w-full h-full object-cover" data-alt="An inviting outdoor poolside lounge area at dusk, featuring comfortable beige sofas and glowing ambient lanterns. The pool reflects the deep blue of the evening sky, and palm trees sway gently in the breeze. The scene is illuminated by warm, soft lighting, projecting a luxury 4-star resort lifestyle." src="https://lh3.googleusercontent.com/aida-public/AB6AXuApUTs6ffYV88yYD78cg4f75H1VvST-GBXnqIS1Xa1PZ19NFyh4nxK0QjhRAkGZQ7h0FUCiiOmeB1J6LMRfA8SQSnvlRL3qK4VFA_MYSbltJy6ujMxV24bfppHFJeL7PWsoXiXBnCsLUsFYfXIhH9AyKU9tXNO6R-FUoQDIEGwXurKDu9RspxGO1p2O4cz6cxofxXe7ovPCCx-1H6Tnmsx6h7TULaDTeidwD7-j2Np_Z_wN0ot4AwjGRiPhcYexnVmiJ0h164mquYHr"/>
+<button class="absolute top-2 right-2 p-1.5 bg-white/90 rounded-full text-error shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+<div class="aspect-square rounded-2xl border-2 border-dashed border-outline-variant flex flex-col items-center justify-center text-outline-variant hover:border-primary hover:text-primary transition-all cursor-pointer">
+<span class="material-symbols-outlined text-3xl">add</span>
+</div>
+</div>
+</div>
+<!-- Section Editor: Rich Text -->
+<div class="bg-surface-container-lowest rounded-3xl p-8 shadow-sm border border-outline-variant">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-tertiary-container rounded-full flex items-center justify-center text-on-tertiary-container">
+<span class="material-symbols-outlined">description</span>
+</div>
+<h3 class="font-headline-md text-on-surface">Otelimiz Hakkında</h3>
+</div>
+</div>
+<div class="border border-outline-variant rounded-2xl overflow-hidden bg-surface-container-low">
+<div class="flex items-center gap-2 p-2 bg-surface-container-high border-b border-outline-variant">
+<button class="p-2 hover:bg-surface-container rounded text-on-surface-variant"><span class="material-symbols-outlined text-lg">format_bold</span></button>
+<button class="p-2 hover:bg-surface-container rounded text-on-surface-variant"><span class="material-symbols-outlined text-lg">format_italic</span></button>
+<button class="p-2 hover:bg-surface-container rounded text-on-surface-variant"><span class="material-symbols-outlined text-lg">format_list_bulleted</span></button>
+<div class="w-px h-4 bg-outline-variant mx-1"></div>
+<button class="p-2 hover:bg-surface-container rounded text-on-surface-variant"><span class="material-symbols-outlined text-lg">link</span></button>
+<button class="p-2 hover:bg-surface-container rounded text-on-surface-variant"><span class="material-symbols-outlined text-lg">image</span></button>
+</div>
+<div class="p-6 min-h-[200px] bg-surface-container-low focus:outline-none" contenteditable="true">
+<p class="text-on-surface-variant leading-relaxed">Arsi Blue Beach Hotel, Alanya'nın Tosmur mevkisinde yer almaktadır. Modern mimarisi ve konforlu odalarıyla misafirlerimize unutulmaz bir konaklama deneyimi sunuyoruz. Otelimiz her şey dahil konseptiyle hizmet vermekte olup, zengin açık büfe seçenekleri ve gün boyu süren aktiviteleriyle aileler için mükemmel bir tercihtir.</p>
+<br/>
+<p class="text-on-surface-variant leading-relaxed">Denize sıfır konumumuz ve özel plajımız sayesinde Akdeniz'in tadını doyasıya çıkarabilirsiniz.</p>
+</div>
+</div>
+</div>
+<!-- Add New Section CTA -->
+<button class="w-full py-10 rounded-3xl border-2 border-dashed border-outline-variant hover:border-primary hover:bg-primary-fixed/30 transition-all flex flex-col items-center justify-center gap-4 text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined text-4xl">add_circle</span>
+<span class="font-headline-md">Yeni Bölüm Ekle</span>
+</button>
+</div>
+<!-- Bottom Spacer -->
+<div class="h-12"></div>
+</section>
+</div>
+</main>
+<!-- Floating UI Helper -->
+<div class="fixed bottom-8 right-8 flex flex-col gap-4">
+<button class="w-14 h-14 bg-surface-container-lowest text-primary rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform border border-outline-variant">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="px-6 py-4 bg-[#10B981] text-white rounded-full shadow-lg flex items-center gap-3 hover:scale-105 transition-transform">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-md">Destek Al</span>
+</button>
+</div>
+</body></html>

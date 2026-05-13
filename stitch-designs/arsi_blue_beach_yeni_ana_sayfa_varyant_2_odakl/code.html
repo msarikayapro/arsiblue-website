@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Arsi Blue Beach - Akdeniz'in Kalbinde Tatil</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#005d90",
+                      "on-primary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-fixed": "#001d32",
+                      "on-tertiary-fixed": "#2e1600",
+                      "on-primary-fixed-variant": "#004b74",
+                      "on-secondary-fixed-variant": "#004e5f",
+                      "background": "#f7f9ff",
+                      "surface-tint": "#006399",
+                      "surface-container-low": "#f1f4f9",
+                      "inverse-surface": "#2d3135",
+                      "on-primary-container": "#f3f7ff",
+                      "tertiary-fixed": "#ffdcc0",
+                      "surface-container": "#ebeef4",
+                      "surface-dim": "#d7dae0",
+                      "secondary-container": "#50d9fe",
+                      "inverse-on-surface": "#eef1f6",
+                      "outline": "#707881",
+                      "on-background": "#181c20",
+                      "secondary-fixed": "#b3ebff",
+                      "on-secondary-fixed": "#001f27",
+                      "tertiary-fixed-dim": "#ffb877",
+                      "primary-fixed-dim": "#94ccff",
+                      "outline-variant": "#bfc7d1",
+                      "on-secondary-container": "#005c70",
+                      "surface-container-highest": "#e0e2e8",
+                      "tertiary": "#864a00",
+                      "primary-fixed": "#cde5ff",
+                      "on-error-container": "#93000a",
+                      "error": "#ba1a1a",
+                      "surface-bright": "#f7f9ff",
+                      "secondary-fixed-dim": "#4cd6fb",
+                      "on-secondary": "#ffffff",
+                      "surface-variant": "#e0e2e8",
+                      "inverse-primary": "#94ccff",
+                      "error-container": "#ffdad6",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-container": "#a95f00",
+                      "secondary": "#00677d",
+                      "on-tertiary-container": "#fff6f1",
+                      "on-surface-variant": "#404850",
+                      "on-error": "#ffffff",
+                      "surface": "#f7f9ff",
+                      "primary-container": "#0077b6",
+                      "on-tertiary-fixed-variant": "#6c3a00",
+                      "on-surface": "#181c20",
+                      "surface-container-high": "#e6e8ee"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "base": "8px",
+                      "section-gap-mobile": "48px",
+                      "section-gap-desktop": "80px",
+                      "gutter": "24px",
+                      "container-max-width": "1200px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "display-lg": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans"],
+                      "label-md": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "label-md": ["14px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/95 backdrop-blur-md shadow-sm border-b border-outline-variant/20">
+<div class="flex justify-between items-center h-[72px] px-margin-mobile md:px-gutter max-w-container-max-width mx-auto">
+<div class="text-headline-md font-headline-lg-mobile tracking-tight text-primary">Arsi Blue Beach</div>
+<div class="hidden md:flex items-center gap-base">
+<a class="px-4 py-2 text-primary font-bold border-b-2 border-primary text-label-md font-label-md" href="#">Otelimiz</a>
+<a class="px-4 py-2 text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Odalar</a>
+<a class="px-4 py-2 text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Tesisler</a>
+<a class="px-4 py-2 text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Kampanya</a>
+<a class="px-4 py-2 text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Galeri</a>
+<a class="px-4 py-2 text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">Konum</a>
+<a class="px-4 py-2 text-on-surface-variant hover:text-primary transition-colors text-label-md font-label-md" href="#">İletişim</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="chat">chat</span>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full text-label-md font-label-md hover:opacity-90 transition-all">Hemen Ara</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative h-screen min-h-[700px] flex items-center justify-center pt-[72px]">
+<div class="absolute inset-0">
+<img alt="Hotel Pool View" class="w-full h-full object-cover" data-alt="A breathtaking aerial view of a luxurious Mediterranean resort featuring a crystal-clear turquoise infinity pool overlooking the deep blue sea. The scene is bathed in the warm, golden light of a late afternoon sun, creating a serene and inviting atmosphere. Elegant white lounge chairs and sun umbrellas line the poolside, while lush tropical greenery adds a touch of natural beauty. The overall aesthetic is high-end and tranquil, perfectly capturing the essence of a premium family vacation destination." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCt5X3BQkU28aThnFSdcuvARG3Cy0fx6rx4vAkWYRb-RowRtlAajWpJbQlVeiY5cp8gecB5b6CPpjd0WXQ36Wsv_itQEUQRXBBVvJHZPxlinGjT1Xo3K1MzVZZ5ifcVEAdEWIe0ZVpW1YevYFt_DLb0MF0QTSsAp0Erx76g1J4ecEs0i4KJoSoj9QB8YCxuNbGDpkYQ6QhwnQXGddZ3MvA9w0ugWhY8atpTNytI-tP7L0h8bfW-IF9k1PFBPh4TxWLGVA_SZJy-2pn"/>
+<div class="absolute inset-0 bg-black/30"></div>
+</div>
+<div class="relative z-10 text-center px-margin-mobile max-w-4xl">
+<h1 class="text-white text-display-lg font-display-lg mb-8 leading-tight">Akdeniz'in Kalbinde, Ailenizle Unutulmaz Bir Tatil</h1>
+<div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+<button class="bg-[#f97316] text-white px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition-transform flex items-center gap-2">
+                    Bayrama Özel Fiyatı Gör
+                </button>
+<button class="border-2 border-white text-white bg-white/10 backdrop-blur-sm px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-primary transition-all flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+                    WhatsApp'tan Sor
+                </button>
+</div>
+<!-- Floating Booking Bar -->
+<div class="mt-16 bg-white/20 backdrop-blur-md p-6 rounded-2xl border border-white/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
+<div class="text-left">
+<p class="text-white/80 text-sm font-medium uppercase tracking-wider">Gecelik Başlayan Fiyat</p>
+<div class="flex items-baseline gap-1">
+<span class="text-white text-headline-lg font-headline-lg">16.250 TL</span>
+<span class="text-white/70 text-sm">'den başlayan</span>
+</div>
+</div>
+<div class="h-px w-full md:h-12 md:w-px bg-white/20"></div>
+<button class="w-full md:w-auto bg-primary text-on-primary px-10 py-4 rounded-xl font-bold text-lg shadow-lg hover:translate-y-[-2px] transition-all">
+                    Hemen Rezervasyon Yap
+                </button>
+</div>
+</div>
+</section>
+<!-- Trust Bar -->
+<section class="bg-surface-container py-8 border-b border-outline-variant/30">
+<div class="max-w-container-max-width mx-auto px-margin-mobile flex flex-wrap justify-center md:justify-between gap-8">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="verified">verified</span>
+<span class="font-semibold">Güvenli Turizm Sertifikalı</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="beach_access">beach_access</span>
+<span class="font-semibold">Denize Sıfır Konum</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="restaurant">restaurant</span>
+<span class="font-semibold">Her Şey Dahil Konsept</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="child_care">child_care</span>
+<span class="font-semibold">Aile Dostu Tesis</span>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-section-gap-desktop max-w-container-max-width mx-auto px-margin-mobile grid md:grid-cols-2 gap-gutter items-center">
+<div class="rounded-3xl overflow-hidden shadow-xl aspect-[4/3]">
+<img alt="Hotel Exterior" class="w-full h-full object-cover" data-alt="A wide-angle shot of a stunning luxury hotel exterior in Alanya, showcasing its contemporary Mediterranean architecture with clean white lines and blue glass accents. The building is surrounded by beautifully manicured gardens filled with palms and blooming hibiscus flowers. The foreground features a shimmering pool surface reflecting the bright blue sky. The lighting is crisp and vibrant, typical of a sunny summer day, emphasizing a fresh, clean, and premium holiday environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP7OmiVOk2DozcN2ysWitK-opb1QckiJciOzHyX5tpDbYgKO_o2kXTNl66O9CSQZyjREq4xc1JtfIX76x974zD_DHukQhPzrnmfvq8-34NEkDEU1E3hl0b5mbJKwnXNO2aZ5WWrI8b3ZbDaXpGoBzam-WeRokrCJR5-Zy8ll5E_6Tdan12-WtfBIL3By1Fmf-TayW8-meDkj3oP1SbrreX0Q-noSTD0ebYPIHo7iQ8nwNgKI_Z40u2iXHtg-brA7FS7jFpFQVEwcI7"/>
+</div>
+<div class="space-y-6">
+<span class="text-primary font-bold tracking-widest uppercase text-sm">Arsi Blue Beach Hotel</span>
+<h2 class="text-display-lg font-display-lg text-on-background">Akdeniz'in Mavisinde Huzur Dolu Bir Tatil</h2>
+<p class="text-body-lg text-on-surface-variant">
+                Alanya'nın büyüleyici sahil şeridinde yer alan otelimiz, modern tasarımı ve üstün hizmet kalitesiyle misafirlerine unutulmaz bir konaklama deneyimi sunuyor. Masmavi denizin kıyısında, güneşin ve konforun tadını çıkarırken kendinizi evinizde hissedeceksiniz.
+            </p>
+<div class="grid grid-cols-2 gap-6 pt-4">
+<div class="bg-surface-container-low p-6 rounded-2xl">
+<div class="text-primary text-headline-lg font-headline-lg">123</div>
+<div class="text-on-surface-variant font-medium">Modern Oda</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-2xl">
+<div class="text-primary text-headline-lg font-headline-lg">450+</div>
+<div class="text-on-surface-variant font-medium">Yatak Kapasitesi</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Rooms Section -->
+<section class="bg-surface py-section-gap-desktop">
+<div class="max-w-container-max-width mx-auto px-margin-mobile">
+<div class="text-center mb-16">
+<h2 class="text-display-lg font-display-lg mb-4">Konforlu Odalarımız</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">İhtiyacınıza göre özenle tasarlanmış odalarımızda huzurla dinlenin.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Room Card 1 -->
+<div class="bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all group">
+<div class="h-64 overflow-hidden">
+<img alt="Standart Oda" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A modern and elegant standard hotel room interior with a large queen-sized bed featuring high-quality white linens and navy blue accent pillows. Large floor-to-ceiling windows let in abundant natural daylight, revealing a private balcony with a sea view. The decor is minimalist and sophisticated, with light wood furniture and soft cream walls. The ambiance is peaceful, airy, and luxurious, highlighting the resort's commitment to comfort." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnWYGiQdyXjKQVNzWfePs7rOv-Kulv-thK0AwHc2OF3l_zLqyd6vw-qYON5NMvNbGj5ZgpSCieNYOEPl57dYdPhI2KaG8Eo-VdrlhlCYWMLjNI6C6fXT0aN8esAB_JD5jxhnZmxslvD3lkXIDE4sj4_McxmoAWAqa_C-hveRnoEy2wwwmuMWfIFI08pv95eJGI5mgvu4hf0XRG9zLLw-Q0uI9eoSUtMOqVLgkmpXoyY0fBElhbbA-4_0WumZESKnl9a_3ZnuKa9rqR"/>
+</div>
+<div class="p-8">
+<h3 class="text-headline-md font-headline-md mb-4">Standart Oda</h3>
+<div class="flex gap-4 mb-6">
+<span class="material-symbols-outlined text-outline" data-icon="ac_unit">ac_unit</span>
+<span class="material-symbols-outlined text-outline" data-icon="wifi">wifi</span>
+<span class="material-symbols-outlined text-outline" data-icon="tv">tv</span>
+<span class="material-symbols-outlined text-outline" data-icon="balcony">balcony</span>
+</div>
+<button class="w-full py-3 rounded-xl border border-primary text-primary font-bold hover:bg-primary hover:text-on-primary transition-colors">Detayları Gör</button>
+</div>
+</div>
+<!-- Room Card 2 -->
+<div class="bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all group">
+<div class="h-64 overflow-hidden relative">
+<div class="absolute top-4 right-4 z-10 bg-tertiary text-on-tertiary-container px-4 py-1 rounded-full text-xs font-bold">EN POPÜLER</div>
+<img alt="Aile Odası" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A spacious family room in a Mediterranean resort, featuring two separate sleeping areas with modern furnishings and soft, warm lighting. The room is decorated in calming tones of sand and sea blue, with ample space for a family to relax. High-quality wooden flooring and large windows create a warm and welcoming environment. The scene is bright and meticulously clean, emphasizing a safe and premium family experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7x9BVqT-XnIUbYxmQDyYCzmT_pxCkXn5V_23OjdiPE2G66Db5RG9bwIGA9H634wzb2EI6l5iKCXHxmULV7JPOtdtvPvYe4VPDVM9zdmo5BQEkuUq8ZKjvgfomXsELyimpA9n-_PTyzqqRsDmzCgMCbL0cQ9Pc5SxZE-nEo47ZesGqAt9hgC4vENKLEKTYth4HdQg_a1M6QAhuwwUdhhKfdXTdcKZw8EmhM_w3jiCMJpRkjUDYQ9NhjUzlbiBPPLbyObkwIiiYcEq9"/>
+</div>
+<div class="p-8">
+<h3 class="text-headline-md font-headline-md mb-4">Aile Odası</h3>
+<div class="flex gap-4 mb-6">
+<span class="material-symbols-outlined text-outline" data-icon="family_restroom">family_restroom</span>
+<span class="material-symbols-outlined text-outline" data-icon="ac_unit">ac_unit</span>
+<span class="material-symbols-outlined text-outline" data-icon="wifi">wifi</span>
+<span class="material-symbols-outlined text-outline" data-icon="kitchen">kitchen</span>
+</div>
+<button class="w-full py-3 rounded-xl border border-primary text-primary font-bold hover:bg-primary hover:text-on-primary transition-colors">Detayları Gör</button>
+</div>
+</div>
+<!-- Room Card 3 -->
+<div class="bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all group">
+<div class="h-64 overflow-hidden">
+<img alt="Ekonomik Oda" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A clean and cozy economic hotel room with a practical layout, featuring twin beds and essential amenities. The room is brightly lit with a clean, modern aesthetic, using a neutral color palette of beige and light gray. It feels fresh and efficient, ideal for budget-conscious travelers who still appreciate high standards of cleanliness and design. The lighting is soft and even, highlighting the tidy and well-maintained interior." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvkkjfplH8RbjEbyZsJaDt77Tuml4RIVEPQ9v9S76xGkzIpPkStS70seR1MWkxSlGiUMa9EQV1FQoOwyM-iW2YrajxEkvKxnZUks5tloj-Vb2H3_5oe92w4YYvcPFlneFXsqgwu-y_eaKtauxwM_vMyfAhd1oMYPGmihRE5vxDftv0iAg9BnKSc88mVefmPI1GyoWiIEzBkVkrsF7WuPtcH0dNFpWLaIoP6DNTgAs6lZPc9XddIFlJehJVmoe81G-xfInCTaRMrdwF"/>
+</div>
+<div class="p-8">
+<h3 class="text-headline-md font-headline-md mb-4">Ekonomik Oda</h3>
+<div class="flex gap-4 mb-6">
+<span class="material-symbols-outlined text-outline" data-icon="ac_unit">ac_unit</span>
+<span class="material-symbols-outlined text-outline" data-icon="wifi">wifi</span>
+<span class="material-symbols-outlined text-outline" data-icon="shower">shower</span>
+</div>
+<button class="w-full py-3 rounded-xl border border-primary text-primary font-bold hover:bg-primary hover:text-on-primary transition-colors">Detayları Gör</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Facilities Section -->
+<section class="py-section-gap-desktop">
+<div class="max-w-container-max-width mx-auto px-margin-mobile">
+<h2 class="text-headline-lg font-headline-lg text-center mb-16">Tesisler &amp; Aktiviteler</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="relative group h-80 rounded-3xl overflow-hidden shadow-lg">
+<img alt="Restaurant" class="w-full h-full object-cover" data-alt="A luxurious open-air restaurant at a Mediterranean resort with a view of the sunset over the ocean. The tables are elegantly set with white linens and fine glassware. The atmosphere is romantic and sophisticated, lit by warm ambient string lights and the orange glow of the setting sun. The surrounding architecture is modern and clean, creating a high-end dining experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMQyR8FbVPb8Gf89U1hI2vD-eMFhahEEGFETc7nV2VRSa5AAMQhQTgzERlSC_umX62UgmCFLGCZU0Kvb7p6RSP5KvEnIpTr9lBjS5l3vCbF89Gx9O-wNA2wMEPkj_xicWHZRlD5w1qblkSurb8yI1ut5B-VA5xnU6S1RqrrXMvYYCleWIMUMQr1KmYiD7j3c1dwKlLRIoxWHqL4ICEGGi9XWr9ZdPfgjYDavrmYfJ_k6pZV4A4cpavwdgcX_DwIUvM5mThFImW0iK7"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
+<div>
+<h4 class="text-white text-headline-md font-headline-md">Restoran</h4>
+<p class="text-white/80">Türk ve Dünya Mutfağı</p>
+</div>
+</div>
+</div>
+<div class="relative group h-80 rounded-3xl overflow-hidden shadow-lg">
+<img alt="Spa" class="w-full h-full object-cover" data-alt="A serene and tranquil spa treatment room with soft, warm lighting and a minimalist interior design. The scene features a professional massage table, stacked clean white towels, and aromatic candles. The color palette is earthy and calming, with natural wood elements and soft cream tones. The overall mood is one of complete relaxation and luxury, emphasizing the hotel's wellness facilities." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn3MKnMK-aHZh0lmcVaQ7nBE4-7L2uwbVTvugdmB6asw11XZO4YSbZh7ZLvPtegl-BmyxFhKlAMcP1cBGg_ffx55jn2OVtBYXtcAGyc7ixluTnl3gbt0MOjZlrVheEGJ0cELWsyAzasaHmskSY-FcQtAKpHn4woZX1s1syHF_WqZoAKVtv-PMscX5TxyM1LH3U7n7_3mPeSPY-IzjBC1b2v79x-MaxHFb5CveiQkQxHwLMvCikXZAGnX3DCTrpFb8aVldDAii7bdZo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
+<div>
+<h4 class="text-white text-headline-md font-headline-md">Spa &amp; Wellness</h4>
+<p class="text-white/80">Ruhunuzu Dinlendirin</p>
+</div>
+</div>
+</div>
+<div class="relative group h-80 rounded-3xl overflow-hidden shadow-lg">
+<img alt="Havuz" class="w-full h-full object-cover" data-alt="A vibrant and sunny pool area featuring multiple water slides and a dedicated children's splash zone. The water is a brilliant turquoise, and the surrounding area is filled with colorful loungers and umbrellas. The scene is full of energy and fun, capturing the perfect family-friendly holiday activity. The bright daylight enhances the clear blue sky and the playful atmosphere of the resort." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiGDE8ejkAR-m3swUNxzDLyEYslP_AImp0m1ejtquzVyn3vZWBZG4cG8IQjInrOsqMKWScj5E_IGLOZAO1026xaS7NdVMeDOCmwj7WjXx-6HtwIZwtd34rzkDjgXDO76Pbzaf-8pRvqzhb4FBNX3r4m0dkEhn8gl5zxyaJ_PeCvpKNP0nqtkjO_0VgP38J4i6h5DjPw2ntVdAg5swYG2ANgeHTMS-WRS6_WcnhkM3-fVMX-gFs4e-kZb-4rKu1CRmDhH9z7eLDogmm"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
+<div>
+<h4 class="text-white text-headline-md font-headline-md">Havuz &amp; Kaydırak</h4>
+<p class="text-white/80">Eğlence Dolu Anlar</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Honeymoon Section -->
+<section class="max-w-container-max-width mx-auto px-margin-mobile my-section-gap-desktop">
+<div class="relative rounded-[3rem] overflow-hidden min-h-[500px] flex items-center p-8 md:p-20">
+<div class="absolute inset-0">
+<img alt="Honeymoon Concept" class="w-full h-full object-cover" data-alt="A romantic honeymoon suite setup with a stunning view of the Mediterranean Sea. The bed is decorated with swan-shaped towels and fresh rose petals, while a bottle of champagne in an ice bucket sits on a nearby table. Large glass doors open to a private terrace with an infinity pool that merges with the blue horizon. The lighting is warm and golden, creating a masalsı (fairytale) and romantic atmosphere for a newlywed couple." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQEgFP6Re4mwJXJY9dGyNXx6ZjPUwA03XJqCDmx6SDtPn0xmz-mrueNHA_RRIh8w_cZnTCej5mGrzXwj-X37azgbL40vPg6cnaafVf6F972M4RIYA8VBThFjYegwWC4gCY65oEcY9ecAeu0IS1Jd2FnsiZbq5gsyEQYb8xeGHUGXifYp-yZJMhtXI6FdfWHvY_GM3MPxa-MysI_9xvlN60NEGLAD2Cu7B9gUnGY_nW03qVqJEHsi_2292n_fnHl-q5RnD8Enyy6HqS"/>
+<div class="absolute inset-0 bg-primary/40 backdrop-blur-[2px]"></div>
+</div>
+<div class="relative z-10 max-w-xl text-white">
+<h2 class="text-display-lg font-display-lg mb-6 leading-tight">Yeni Hayatınızın İlk Günlerini Masalsı Bir Atmosferde Geçirin</h2>
+<p class="text-lg mb-8 text-white/90">Özel balayı paketlerimizle, en unutulmaz anılarınızı Akdeniz'in büyüleyici manzarası eşliğinde yaşayın.</p>
+<button class="bg-white text-primary px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform shadow-lg">Balayı Paketlerini İncele</button>
+</div>
+</div>
+</section>
+<!-- Location Section -->
+<section class="py-section-gap-desktop bg-surface-container-low">
+<div class="max-w-container-max-width mx-auto px-margin-mobile grid md:grid-cols-2 gap-gutter items-center">
+<div class="space-y-8">
+<h2 class="text-headline-lg font-headline-lg">Konum &amp; Ulaşım</h2>
+<p class="text-on-surface-variant text-body-lg">Alanya'nın kalbinde, tüm cazibe merkezlerine yakın ama gürültüden uzak bir konumdayız.</p>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<span class="font-medium">Obagöl Mevkii, Alanya / Antalya</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="directions_car">directions_car</span>
+<span class="font-medium">Alanya Merkez: 4.5 km</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="flight">flight</span>
+<span class="font-medium">Gazipaşa Havalimanı: 35 km</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="flight_takeoff">flight_takeoff</span>
+<span class="font-medium">Antalya Havalimanı: 130 km</span>
+</div>
+</div>
+</div>
+<div class="h-96 rounded-3xl overflow-hidden shadow-inner bg-surface-dim relative">
+<img alt="Map View" class="w-full h-full object-cover" data-location="Alanya, Turkey" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwxM2aXwfzhuL8e8lab2LJseFjFv9TKfGpnOy7AwY3iTQLuS0JTTVjkfmzhQSAoVHZjqMoWdNtAGR1Lwl4Ikcipn4-_jyh3B-_3YKlL8xNKXk92QqAdSoj_xnX7wcxfvA191Fnmu2KeQ8MgMYm2HWuQbdDatheG_XmewC4om0cA8rhMigQid4E7GeRyMOQVRss5zBhhjiPl-gXp72InnUju2LJVjtKFdPey_dvs4ylU3v51hmEyqmQ_tkKCyxb5PNEBwjMJKCAz2Ix"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-white p-4 rounded-2xl shadow-2xl border border-primary/20 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="hotel">hotel</span>
+</div>
+<span class="font-bold text-primary">Arsi Blue Beach</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-section-gap-desktop max-w-3xl mx-auto px-margin-mobile">
+<h2 class="text-headline-lg font-headline-lg text-center mb-12">Sık Sorulan Sorular</h2>
+<div class="space-y-4">
+<div class="bg-white rounded-2xl p-6 shadow-sm border border-outline-variant/20">
+<button class="flex justify-between items-center w-full text-left font-bold text-lg text-on-surface">
+                    Giriş ve çıkış saatleri nedir?
+                    <span class="material-symbols-outlined" data-icon="expand_more">expand_more</span>
+</button>
+<p class="mt-4 text-on-surface-variant hidden">Otelimize giriş saati 14:00, çıkış saati ise 12:00'dir.</p>
+</div>
+<div class="bg-white rounded-2xl p-6 shadow-sm border border-outline-variant/20">
+<button class="flex justify-between items-center w-full text-left font-bold text-lg text-on-surface">
+                    Evcil hayvan kabul ediliyor mu?
+                    <span class="material-symbols-outlined" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+<div class="bg-white rounded-2xl p-6 shadow-sm border border-outline-variant/20">
+<button class="flex justify-between items-center w-full text-left font-bold text-lg text-on-surface">
+                    Otopark hizmeti ücretli mi?
+                    <span class="material-symbols-outlined" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant pt-section-gap-mobile pb-24 md:pb-margin-mobile">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-gutter max-w-container-max-width mx-auto">
+<div class="space-y-4">
+<div class="text-headline-md font-headline-md text-primary">Arsi Blue Beach</div>
+<p class="text-on-surface-variant text-body-md">Akdeniz'in en güzel sahilinde, rüya gibi bir tatil için sizi bekliyoruz.</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:opacity-70" data-icon="facebook">Notebook</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:opacity-70" data-icon="photo_camera">photo_camera</span>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-primary">Hızlı Linkler</h4>
+<ul class="space-y-2">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors text-label-md" href="#">Hakkımızda</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors text-label-md" href="#">Odalarımız</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors text-label-md" href="#">Kampanyalar</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors text-label-md" href="#">KVKK</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-primary">İletişim</h4>
+<p class="text-on-surface-variant text-label-md">Obagöl Mevkii, Alanya</p>
+<p class="text-on-surface-variant text-label-md">+90 (242) 514 00 00</p>
+<p class="text-on-surface-variant text-label-md">info@arsibluebeach.com</p>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-primary">E-Bülten</h4>
+<p class="text-on-surface-variant text-label-md">Fırsatlardan haberdar olmak için kaydolun.</p>
+<div class="flex gap-2">
+<input class="bg-surface-container rounded-lg border-none focus:ring-2 focus:ring-primary w-full text-sm" placeholder="E-posta" type="email"/>
+<button class="bg-primary text-on-primary p-2 rounded-lg">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+<div class="max-w-container-max-width mx-auto px-margin-mobile mt-12 pt-8 border-t border-outline-variant/30 text-center text-on-surface-variant text-sm">
+            © 2024 Arsi Blue Beach Hotel. Tüm Hakları Saklıdır.
+        </div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 md:hidden bg-surface-container border-t border-outline-variant/30 shadow-[0_-4px_12px_rgba(0,0,0,0.04)]">
+<div class="flex justify-around items-center h-16 px-2 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+<span class="text-label-md font-label-md">Ara</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-4 py-1.5 transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+<span class="text-label-md font-label-md">WhatsApp</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="local_offer">local_offer</span>
+<span class="text-label-md font-label-md">Fırsatlar</span>
+</a>
+</div>
+</nav>
+<!-- WhatsApp Floating Button (Desktop) -->
+<div class="fixed bottom-8 right-8 z-40 hidden md:flex flex-col items-end gap-2">
+<div class="bg-white px-4 py-2 rounded-2xl shadow-xl border border-outline-variant/20 text-on-surface font-semibold text-sm">
+            Size nasıl yardımcı olabilirim?
+        </div>
+<button class="bg-[#10B981] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center gap-2 group">
+<span class="material-symbols-outlined text-3xl" data-icon="chat" style="font-variation-settings: 'FILL' 1;">chat</span>
+<span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 font-bold whitespace-nowrap">Bize Yazın</span>
+</button>
+</div>
+</body></html>

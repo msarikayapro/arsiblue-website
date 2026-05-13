@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#707881",
+                        "on-primary-fixed-variant": "#004b74",
+                        "on-primary-fixed": "#001d32",
+                        "on-background": "#181c20",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#a95f00",
+                        "primary-fixed": "#cde5ff",
+                        "on-tertiary-fixed": "#2e1600",
+                        "secondary-container": "#50d9fe",
+                        "tertiary-fixed-dim": "#ffb877",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e6e8ee",
+                        "secondary": "#00677d",
+                        "on-secondary-fixed-variant": "#004e5f",
+                        "on-primary-container": "#f3f7ff",
+                        "inverse-on-surface": "#eef1f6",
+                        "inverse-primary": "#94ccff",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#ebeef4",
+                        "tertiary": "#864a00",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#f7f9ff",
+                        "surface-container-highest": "#e0e2e8",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#6c3a00",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f1f4f9",
+                        "primary": "#005d90",
+                        "surface-dim": "#d7dae0",
+                        "on-error": "#ffffff",
+                        "primary-container": "#0077b6",
+                        "primary-fixed-dim": "#94ccff",
+                        "on-surface-variant": "#404850",
+                        "tertiary-fixed": "#ffdcc0",
+                        "secondary-fixed-dim": "#4cd6fb",
+                        "on-surface": "#181c20",
+                        "surface-tint": "#006399",
+                        "outline-variant": "#bfc7d1",
+                        "on-tertiary-container": "#fff6f1",
+                        "on-secondary-container": "#005c70",
+                        "background": "#f7f9ff",
+                        "on-secondary-fixed": "#001f27",
+                        "inverse-surface": "#2d3135",
+                        "surface-bright": "#f7f9ff",
+                        "secondary-fixed": "#b3ebff",
+                        "surface-variant": "#e0e2e8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap-desktop": "80px",
+                        "section-gap-mobile": "48px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "container-max-width": "1200px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface overflow-x-hidden">
+<!-- SideNavBar Anchor -->
+<aside class="h-screen w-64 fixed left-0 top-0 flex flex-col h-full border-r border-outline-variant bg-surface-container shadow-sm z-50">
+<div class="p-6">
+<h1 class="font-display-lg text-headline-md text-primary tracking-tight">Arsi Blue Beach</h1>
+<p class="font-label-md text-label-md text-on-surface-variant opacity-70">Yönetim Paneli</p>
+</div>
+<nav class="flex-1 mt-4 overflow-y-auto">
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-colors transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Panel</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-colors transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md">Rezervasyonlar</span>
+</a>
+<a class="bg-secondary-container text-on-secondary-container rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-all duration-200 active:scale-95 shadow-sm" href="#">
+<span class="material-symbols-outlined" data-icon="bed" style="font-variation-settings: 'FILL' 1;">bed</span>
+<span class="font-label-md text-label-md">Odalar</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-colors transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Misafirler</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-colors transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-md text-label-md">Finans</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-colors transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Ayarlar</span>
+</a>
+</nav>
+<div class="p-4 bg-surface-container-high m-4 rounded-xl">
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-label-md flex items-center justify-center gap-2 hover:opacity-90 transition-all duration-200 active:scale-95">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+                Yeni Rezervasyon
+            </button>
+</div>
+<div class="p-4 border-t border-outline-variant flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold">A</div>
+<div>
+<p class="font-label-md text-on-surface text-sm">Admin Profili</p>
+<p class="text-[12px] text-on-surface-variant">Çıkış Yap</p>
+</div>
+</div>
+</aside>
+<!-- TopAppBar Anchor -->
+<header class="fixed top-0 right-0 h-16 ml-64 w-[calc(100%-16rem)] flex justify-between items-center px-gutter bg-surface border-b border-outline-variant z-40">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-md text-headline-md text-primary">Odalarımız Sayfa Düzenleyici</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center bg-surface-container-low px-4 py-1.5 rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 font-body-md" placeholder="Panelde ara..." type="text"/>
+</div>
+<div class="flex gap-2">
+<button class="hover:bg-surface-container-low rounded-full p-2 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="hover:bg-surface-container-low rounded-full p-2 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-2"></div>
+<button class="bg-surface-container-highest text-on-surface px-4 py-2 rounded-lg font-label-md hover:bg-outline-variant transition-all">Taslağı Kaydet</button>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md hover:bg-primary-container transition-all">Yayınla</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-gutter min-h-screen bg-surface-container-lowest flex gap-8">
+<!-- Editor Sidebar (Sections List) -->
+<aside class="w-72 shrink-0">
+<div class="sticky top-24 space-y-4">
+<div class="bg-surface-container-low rounded-2xl p-4 border border-outline-variant/30">
+<h3 class="font-label-md text-primary mb-4 uppercase tracking-wider text-xs">Sayfa Bölümleri</h3>
+<ul class="space-y-2">
+<li>
+<button class="w-full flex items-center justify-between p-3 rounded-xl bg-secondary-container text-on-secondary-container font-label-md transition-all border border-secondary/20">
+<span class="flex items-center gap-3">
+<span class="material-symbols-outlined" data-icon="image">image</span> Hero Bölümü
+                                </span>
+<span class="material-symbols-outlined text-[18px]" data-icon="drag_indicator">drag_indicator</span>
+</button>
+</li>
+<li>
+<button class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-surface-container-high text-on-surface-variant font-label-md transition-all group">
+<span class="flex items-center gap-3">
+<span class="material-symbols-outlined" data-icon="category">category</span> Oda Kategorileri
+                                </span>
+<span class="material-symbols-outlined text-[18px] opacity-0 group-hover:opacity-100" data-icon="drag_indicator">drag_indicator</span>
+</button>
+</li>
+<li>
+<button class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-surface-container-high text-on-surface-variant font-label-md transition-all group">
+<span class="flex items-center gap-3">
+<span class="material-symbols-outlined" data-icon="featured_play_list">featured_play_list</span> Genel Özellikler
+                                </span>
+<span class="material-symbols-outlined text-[18px] opacity-0 group-hover:opacity-100" data-icon="drag_indicator">drag_indicator</span>
+</button>
+</li>
+<li>
+<button class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-surface-container-high text-on-surface-variant font-label-md transition-all group">
+<span class="flex items-center gap-3">
+<span class="material-symbols-outlined" data-icon="quiz">quiz</span> SSS (FAQ)
+                                </span>
+<span class="material-symbols-outlined text-[18px] opacity-0 group-hover:opacity-100" data-icon="drag_indicator">drag_indicator</span>
+</button>
+</li>
+</ul>
+<button class="w-full mt-4 flex items-center justify-center gap-2 p-3 border-2 border-dashed border-outline-variant rounded-xl text-on-surface-variant hover:border-primary hover:text-primary transition-all font-label-md">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span> Yeni Bölüm Ekle
+                    </button>
+</div>
+<div class="bg-primary-container/10 p-4 rounded-2xl border border-primary/20">
+<p class="font-label-md text-primary text-sm flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="info">info</span> İpucu
+                    </p>
+<p class="text-xs text-on-surface-variant leading-relaxed">Değişikliklerin canlı sitede görünmesi için sağ üstteki "Yayınla" butonuna basmayı unutmayın.</p>
+</div>
+</div>
+</aside>
+<!-- Editor Workspace -->
+<div class="flex-1 space-y-8 pb-20">
+<!-- SECTION 1: HERO EDITOR -->
+<section class="bg-surface rounded-3xl p-8 shadow-sm border border-outline-variant/50 relative">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h4 class="font-headline-md text-primary mb-1">Hero Bölümü</h4>
+<p class="text-on-surface-variant font-body-md text-sm">Sayfanın en üstünde yer alan karşılama alanı.</p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-container-high rounded-lg text-outline"><span class="material-symbols-outlined" data-icon="visibility">visibility</span></button>
+<button class="p-2 hover:bg-error-container hover:text-error rounded-lg text-outline"><span class="material-symbols-outlined" data-icon="delete">delete</span></button>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-8">
+<div class="col-span-12 lg:col-span-7 space-y-6">
+<div class="space-y-2">
+<label class="font-label-md text-on-surface">Ana Başlık</label>
+<input class="w-full bg-surface-container-low border-outline-variant rounded-xl p-4 focus:ring-primary focus:border-primary font-body-md" type="text" value="Konforlu ve Keyifli Bir Tatil Deneyimi"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-on-surface">Alt Metin</label>
+<textarea class="w-full bg-surface-container-low border-outline-variant rounded-xl p-4 focus:ring-primary focus:border-primary font-body-md" rows="3">Akdeniz'in masmavi sularına karşı, modern tasarımlı odalarımızda evinizin konforunu yaşayın.</textarea>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-5">
+<label class="font-label-md text-on-surface block mb-2">Arka Plan Görseli</label>
+<div class="relative group aspect-video rounded-2xl overflow-hidden border-2 border-dashed border-outline-variant flex items-center justify-center bg-surface-container">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60" data-alt="A luxurious hotel room with a view of the turquoise Mediterranean Sea through large floor-to-ceiling windows. The interior is modern and bright with sandy beige tones, light wood furniture, and soft white linens. Golden hour sunlight streams into the room, creating a warm, inviting, and premium resort atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPzg1req3uKC94Un3WRpC6JxVowQv05Ksp1qSeVcb_QLGU5LL1dqbQqWTUcC7jckN_ia17URMB9ZldJIRGAl-xf3cO2P8TV775WJsZGN4WK0EyrVbkssyoFfIAdj1v0JTQoyuyzg2byfarRvPI8nabe8K5tZcF0lzzBkk2QH0vqx5sQK39qb0Ab8RKiqBjFnOSfYtBiYJ8PKPiRLW3QY3u5L9qkoyyL6i_Ll_WPk8dgTkHQgelZS9Dn6wJoh3zPgdeoxN4P1xRBgRo"/>
+<div class="relative z-10 text-center">
+<button class="bg-white/90 backdrop-blur-md px-4 py-2 rounded-full font-label-md shadow-lg hover:bg-white transition-all text-primary flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="cloud_upload">cloud_upload</span> Değiştir
+                                </button>
+<p class="mt-2 text-xs text-on-surface font-semibold bg-white/50 px-2 py-1 rounded inline-block">Maks. 5MB, JPG/PNG</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: ROOM CATEGORIES EDITOR -->
+<section class="bg-surface rounded-3xl p-8 shadow-sm border border-outline-variant/50">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h4 class="font-headline-md text-primary mb-1">Oda Kategorileri</h4>
+<p class="text-on-surface-variant font-body-md text-sm">Sunulan oda tiplerini ve detaylarını listeleyin.</p>
+</div>
+<button class="bg-secondary-container text-on-secondary-container px-6 py-2.5 rounded-xl font-label-md flex items-center gap-2 hover:shadow-md transition-all">
+<span class="material-symbols-outlined" data-icon="add">add</span> Yeni Oda Tipi
+                    </button>
+</div>
+<!-- Room Item 1 -->
+<div class="border border-outline-variant rounded-2xl p-6 mb-6 hover:shadow-lg transition-shadow bg-surface-container-lowest">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="md:col-span-1">
+<div class="aspect-square rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A spacious and elegant superior room in a family resort. The room features a king-size bed with plush blue pillows, a sitting area with two armchairs, and a private balcony. The walls are adorned with minimalist Mediterranean-themed art. The overall style is clean, airy, and high-end Mediterranean modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAgGBByD5IGuoWvrQp5SN7Xo5feE3ygrcX0yKViSvBkfOBgsneiRT0QpI1F7Z9H5SvAswQrd3Gx5-L5cRoCowyyjnPPArAtNawznhEOcQnWx2nrlPgo6mk_rFjhgVM61ABoeNrPj8x13HqCSHvW6z6knfUxjqClavhrxr4EafyhUI9Im3gwmDUzyG5ckEfgr3MwYTZuwFMu_Q1-WKaZoW1Ytm1a6ft4l_aU5Sd0IEIzaCa1Dlznrb09-LfV9i8xiDhYiU6KlzMBZ0A"/>
+<div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity cursor-pointer">
+<span class="material-symbols-outlined text-white" data-icon="edit">edit</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-3 space-y-4">
+<div class="flex justify-between items-start">
+<div class="flex-1 mr-4">
+<label class="text-[10px] font-bold text-outline uppercase">Oda Adı</label>
+<input class="w-full text-lg font-bold bg-transparent border-0 border-b border-transparent focus:border-primary focus:ring-0 p-0" type="text" value="Standart Deniz Manzaralı Oda"/>
+</div>
+<div class="w-32">
+<label class="text-[10px] font-bold text-outline uppercase">Başlangıç Fiyatı</label>
+<div class="flex items-center gap-1 border-b border-transparent focus-within:border-primary transition-all">
+<span class="text-lg font-bold text-secondary">₺</span>
+<input class="w-full text-lg font-bold bg-transparent border-0 focus:ring-0 p-0 text-secondary" type="text" value="2.450"/>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<div>
+<label class="text-[10px] font-bold text-outline uppercase block mb-1">Kapasite</label>
+<select class="w-full bg-surface-container-low rounded-lg border-outline-variant text-sm py-1.5 px-3">
+<option>2 Yetişkin + 1 Çocuk</option>
+<option>3 Yetişkin</option>
+<option>4 Yetişkin</option>
+</select>
+</div>
+<div class="col-span-3">
+<label class="text-[10px] font-bold text-outline uppercase block mb-1">Oda İmkanları (Etiketler)</label>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full flex items-center gap-1">
+                                            Wi-Fi <span class="material-symbols-outlined text-[14px] cursor-pointer" data-icon="close">close</span>
+</span>
+<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full flex items-center gap-1">
+                                            Klima <span class="material-symbols-outlined text-[14px] cursor-pointer" data-icon="close">close</span>
+</span>
+<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full flex items-center gap-1">
+                                            Minibar <span class="material-symbols-outlined text-[14px] cursor-pointer" data-icon="close">close</span>
+</span>
+<button class="px-3 py-1 border border-dashed border-primary text-primary text-xs font-semibold rounded-full hover:bg-primary/5">+ Ekle</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Room Item 2 -->
+<div class="border border-outline-variant rounded-2xl p-6 opacity-80 hover:opacity-100 transition-all bg-surface-container-lowest">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="md:col-span-1">
+<div class="aspect-square rounded-xl overflow-hidden bg-surface-container flex items-center justify-center border-2 border-dashed border-outline-variant">
+<div class="text-center text-outline">
+<span class="material-symbols-outlined text-[32px]" data-icon="add_photo_alternate">add_photo_alternate</span>
+<p class="text-[10px] mt-1 font-bold">GÖRSEL EKLE</p>
+</div>
+</div>
+</div>
+<div class="md:col-span-3 space-y-4">
+<div class="flex justify-between items-start">
+<div class="flex-1 mr-4">
+<label class="text-[10px] font-bold text-outline uppercase">Oda Adı</label>
+<input class="w-full text-lg font-bold bg-transparent border-0 border-b border-transparent focus:border-primary focus:ring-0 p-0" placeholder="Aile Suiti" type="text"/>
+</div>
+<div class="w-32">
+<label class="text-[10px] font-bold text-outline uppercase">Başlangıç Fiyatı</label>
+<div class="flex items-center gap-1 border-b border-transparent focus-within:border-primary transition-all">
+<span class="text-lg font-bold text-secondary">₺</span>
+<input class="w-full text-lg font-bold bg-transparent border-0 focus:ring-0 p-0 text-secondary" placeholder="0.00" type="text"/>
+</div>
+</div>
+</div>
+<div class="text-center py-4 text-on-surface-variant font-body-md italic border-t border-outline-variant/30 mt-4">
+                                Düzenlemeye devam etmek için oda bilgilerini girin...
+                            </div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: GENERAL FEATURES EDITOR -->
+<section class="bg-surface rounded-3xl p-8 shadow-sm border border-outline-variant/50">
+<div class="mb-6">
+<h4 class="font-headline-md text-primary mb-1">Genel Otel Özellikleri</h4>
+<p class="text-on-surface-variant font-body-md text-sm">Tüm konuklar için sunulan ortak hizmetleri seçin.</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+<!-- Feature Toggle -->
+<div class="p-4 border-2 border-primary bg-primary/5 rounded-2xl flex flex-col items-center gap-3 text-center cursor-pointer transition-all">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="pool" style="font-variation-settings: 'FILL' 1;">pool</span>
+<span class="font-label-md text-sm">Açık Havuz</span>
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="p-4 border-2 border-outline-variant hover:border-primary/50 rounded-2xl flex flex-col items-center gap-3 text-center cursor-pointer transition-all">
+<span class="material-symbols-outlined text-outline text-[32px]" data-icon="wifi">wifi</span>
+<span class="font-label-md text-sm text-on-surface-variant">Ücretsiz Wi-Fi</span>
+<span class="material-symbols-outlined text-outline-variant text-[18px]" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+</div>
+<div class="p-4 border-2 border-primary bg-primary/5 rounded-2xl flex flex-col items-center gap-3 text-center cursor-pointer transition-all">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="restaurant" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="font-label-md text-sm">Restoran</span>
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="p-4 border-2 border-primary bg-primary/5 rounded-2xl flex flex-col items-center gap-3 text-center cursor-pointer transition-all">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="spa" style="font-variation-settings: 'FILL' 1;">spa</span>
+<span class="font-label-md text-sm">Spa &amp; Hamam</span>
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="p-4 border-2 border-outline-variant hover:border-primary/50 rounded-2xl flex flex-col items-center gap-3 text-center cursor-pointer transition-all">
+<span class="material-symbols-outlined text-outline text-[32px]" data-icon="fitness_center">fitness_center</span>
+<span class="font-label-md text-sm text-on-surface-variant">Fitness Salonu</span>
+<span class="material-symbols-outlined text-outline-variant text-[18px]" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+</div>
+<div class="p-4 border-2 border-outline-variant border-dashed rounded-2xl flex flex-col items-center justify-center gap-2 text-center cursor-pointer hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-outline" data-icon="add_box">add_box</span>
+<span class="font-label-md text-xs text-outline uppercase">Yeni Ekle</span>
+</div>
+</div>
+</section>
+<!-- SECTION 4: FAQ SECTION EDITOR -->
+<section class="bg-surface rounded-3xl p-8 shadow-sm border border-outline-variant/50">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h4 class="font-headline-md text-primary mb-1">Sıkça Sorulan Sorular</h4>
+<p class="text-on-surface-variant font-body-md text-sm">Konukların odayla ilgili merak edebileceği sorular.</p>
+</div>
+<button class="text-primary font-label-md flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined" data-icon="library_add">library_add</span> Şablonlardan Seç
+                    </button>
+</div>
+<div class="space-y-4">
+<!-- FAQ Item 1 -->
+<div class="bg-surface-container-low rounded-2xl p-6 border border-outline-variant/40">
+<div class="flex gap-4">
+<div class="flex-1 space-y-4">
+<input class="w-full font-bold bg-transparent border-0 border-b border-outline-variant focus:border-primary focus:ring-0 px-0 py-2" type="text" value="Giriş ve çıkış saatleri nedir?"/>
+<textarea class="w-full bg-white/50 rounded-xl border-outline-variant p-3 text-sm font-body-md focus:ring-primary focus:border-primary" rows="2">Otele giriş saati 14:00, çıkış saati ise en geç 12:00'dir. Müsaitlik durumuna göre erken giriş için resepsiyonla görüşebilirsiniz.</textarea>
+</div>
+<div class="flex flex-col gap-2">
+<button class="p-2 hover:bg-surface-container-high rounded-full text-outline"><span class="material-symbols-outlined" data-icon="expand_less">expand_less</span></button>
+<button class="p-2 hover:bg-surface-container-high rounded-full text-outline"><span class="material-symbols-outlined" data-icon="expand_more">expand_more</span></button>
+<button class="p-2 hover:bg-error-container hover:text-error rounded-full text-outline"><span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span></button>
+</div>
+</div>
+</div>
+<!-- FAQ Item 2 -->
+<div class="bg-surface-container-low rounded-2xl p-6 border border-outline-variant/40">
+<div class="flex gap-4">
+<div class="flex-1 space-y-4">
+<input class="w-full font-bold bg-transparent border-0 border-b border-outline-variant focus:border-primary focus:ring-0 px-0 py-2" type="text" value="Odalarda bebek yatağı temin ediliyor mu?"/>
+<textarea class="w-full bg-white/50 rounded-xl border-outline-variant p-3 text-sm font-body-md focus:ring-primary focus:border-primary" rows="2">Evet, 0-2 yaş arası minik misafirlerimiz için ücretsiz bebek yatağı hizmetimiz bulunmaktadır.</textarea>
+</div>
+<div class="flex flex-col gap-2">
+<button class="p-2 hover:bg-surface-container-high rounded-full text-outline"><span class="material-symbols-outlined" data-icon="expand_less">expand_less</span></button>
+<button class="p-2 hover:bg-surface-container-high rounded-full text-outline"><span class="material-symbols-outlined" data-icon="expand_more">expand_more</span></button>
+<button class="p-2 hover:bg-error-container hover:text-error rounded-full text-outline"><span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span></button>
+</div>
+</div>
+</div>
+<button class="w-full py-4 border-2 border-dashed border-outline-variant rounded-2xl text-outline font-label-md hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="add_box">add_box</span> Soru Ekle
+                    </button>
+</div>
+</section>
+</div>
+</main>
+<!-- FAB for quick action (only if aligned with primary purpose) -->
+<!-- Removed for focused page editing context per guidelines -->
+</body></html>
