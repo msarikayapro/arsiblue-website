@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Models\EventLog;
 use App\Models\Lead;
+use App\Services\MetaCapiService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -69,8 +70,18 @@ class LeadController extends Controller
             logger()->warning('Lead notification mail failed', ['e' => $e->getMessage()]);
         }
 
-        // Server-side CAPI (Adım 11'de gerçek gönderim — şimdilik direct fire çalışır)
-        // app(\App\Services\MetaCapiService::class)->sendLead($lead, $event);
+        // Meta CAPI Lead event (phone hashlenerek user_data'ya konur)
+        try {
+            app(MetaCapiService::class)->send(
+                eventName: 'Lead',
+                eventId: $event->event_id,
+                event: $event,
+                userData: ['phone' => $lead->phone],
+                customData: ['content_name' => 'Bilgi Al Form Submit'],
+            );
+        } catch (\Throwable $e) {
+            logger()->warning('CAPI Lead send failed', ['e' => $e->getMessage()]);
+        }
 
         return response()->json([
             'ok' => true,

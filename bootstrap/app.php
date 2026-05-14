@@ -15,6 +15,11 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'admin.auth' => \App\Http\Middleware\AdminAuth::class,
         ]);
+
+        // Frontend route'ları için UTM session capture
+        $middleware->web(append: [
+            \App\Http\Middleware\CaptureUtmParameters::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
