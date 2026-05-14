@@ -28,17 +28,16 @@
                     ['admin.dashboard', 'dashboard', 'Panel', null],
                     ['admin.pages.index', 'edit_document', 'Sayfa İçerikleri', 'pages'],
                     ['admin.campaigns.index', 'local_offer', 'Kampanyalar', 'campaigns'],
-                    // Odalar/Galeri/SSS — Adım 8
+                    ['admin.rooms.index', 'bed', 'Odalar', 'rooms'],
+                    ['admin.gallery.index', 'photo_library', 'Galeri', 'gallery'],
+                    ['admin.faqs.index', 'help', 'SSS', 'faqs'],
                     ['admin.tracking.index', 'monitoring', 'Tracking & Pixel', 'tracking'],
-                    ['#', 'bed', 'Odalar', 'rooms'],
-                    ['#', 'photo_library', 'Galeri', 'gallery'],
-                    ['#', 'help', 'SSS', 'faqs'],
-                    ['#', 'travel_explore', 'SEO', 'seo'],
-                    ['#', 'event_note', 'Event Logları', 'events'],
-                    ['#', 'group', 'Lead\'ler', 'leads'],
-                    ['#', 'call', 'İletişim Bilgileri', 'contact'],
-                    ['#', 'business', 'Acenta Bilgileri', 'agency'],
-                    ['#', 'settings', 'Genel Ayarlar', 'settings'],
+                    ['admin.seo.index', 'travel_explore', 'SEO', 'seo'],
+                    ['admin.events.index', 'event_note', 'Event Logları', 'events'],
+                    ['admin.leads.index', 'group', 'Lead\'ler', 'leads'],
+                    ['admin.contact.edit', 'call', 'İletişim Bilgileri', 'contact'],
+                    ['admin.agency.edit', 'business', 'Acenta Bilgileri', 'agency'],
+                    ['admin.settings.edit', 'settings', 'Genel Ayarlar', 'settings'],
                 ];
             @endphp
             @foreach ($items as [$route, $icon, $label, $key])

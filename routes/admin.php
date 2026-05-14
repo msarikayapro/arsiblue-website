@@ -1,9 +1,18 @@
 <?php
 
+use App\Http\Controllers\Admin\AgencyController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CampaignController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\EventLogController;
+use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\LeadController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\RoomController;
+use App\Http\Controllers\Admin\SeoController;
+use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\TrackingController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +58,50 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('tracking/test-capi', [TrackingController::class, 'testCapi'])->name('tracking.test-capi');
         Route::get('tracking/health', [TrackingController::class, 'health'])->name('tracking.health');
 
-        // Diğer modüller Adım 8 ile gelecek
+        // ===== Adım 8 — kalan modüller =====
+
+        // Odalar
+        Route::resource('rooms', RoomController::class)->except('show');
+        Route::post('rooms/{room}/upload-image', [RoomController::class, 'uploadImage'])->name('rooms.upload-image');
+
+        // Galeri
+        Route::get('gallery', [GalleryController::class, 'index'])->name('gallery.index');
+        Route::post('gallery/upload', [GalleryController::class, 'upload'])->name('gallery.upload');
+        Route::put('gallery/{gallery}', [GalleryController::class, 'update'])->name('gallery.update');
+        Route::delete('gallery/{gallery}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
+        Route::post('gallery/reorder', [GalleryController::class, 'reorder'])->name('gallery.reorder');
+
+        // SSS
+        Route::resource('faqs', FaqController::class)->except('show');
+
+        // SEO
+        Route::get('seo', [SeoController::class, 'index'])->name('seo.index');
+        Route::get('seo/{slug}', [SeoController::class, 'edit'])->name('seo.edit');
+        Route::put('seo/{slug}', [SeoController::class, 'update'])->name('seo.update');
+
+        // Event Logları
+        Route::get('events', [EventLogController::class, 'index'])->name('events.index');
+        Route::get('events/export', [EventLogController::class, 'export'])->name('events.export');
+        Route::get('events/{event}', [EventLogController::class, 'show'])->name('events.show');
+
+        // Lead'ler
+        Route::get('leads', [LeadController::class, 'index'])->name('leads.index');
+        Route::get('leads/{lead}', [LeadController::class, 'show'])->name('leads.show');
+        Route::put('leads/{lead}/status', [LeadController::class, 'updateStatus'])->name('leads.status');
+        Route::put('leads/{lead}/notes', [LeadController::class, 'updateNotes'])->name('leads.notes');
+        Route::delete('leads/{lead}', [LeadController::class, 'destroy'])->name('leads.destroy');
+
+        // İletişim
+        Route::get('contact', [ContactController::class, 'edit'])->name('contact.edit');
+        Route::put('contact', [ContactController::class, 'update'])->name('contact.update');
+
+        // Acenta
+        Route::get('agency', [AgencyController::class, 'edit'])->name('agency.edit');
+        Route::put('agency', [AgencyController::class, 'update'])->name('agency.update');
+        Route::post('agency/tursab-upload', [AgencyController::class, 'uploadTursab'])->name('agency.tursab-upload');
+
+        // Genel Ayarlar
+        Route::get('settings', [SettingsController::class, 'edit'])->name('settings.edit');
+        Route::put('settings', [SettingsController::class, 'update'])->name('settings.update');
     });
 });
