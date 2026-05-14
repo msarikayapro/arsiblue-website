@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+        @apply bg-background text-on-background;
+    }
+}
+
+@layer utilities {
+    /* Mediterranean Serenity — Ambient shadows (DESIGN.md "Elevation & Depth") */
+    .ambient-shadow-lvl1 {
+        box-shadow: 0px 4px 12px rgba(0, 93, 144, 0.04);
+    }
+
+    .ambient-shadow-lvl2 {
+        box-shadow: 0px 10px 24px rgba(0, 93, 144, 0.08);
+    }
+
+    /* Material Symbols icon helper */
+    .material-symbols-outlined {
+        font-family: 'Material Symbols Outlined';
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;
+        line-height: 1;
+        letter-spacing: normal;
+        text-transform: none;
+        display: inline-block;
+        white-space: nowrap;
+        word-wrap: normal;
+        direction: ltr;
+        font-feature-settings: 'liga';
+        -webkit-font-feature-settings: 'liga';
+        -webkit-font-smoothing: antialiased;
+    }
+}
