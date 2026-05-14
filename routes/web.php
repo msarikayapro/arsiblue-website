@@ -7,6 +7,7 @@ use App\Http\Controllers\Site\LandingController;
 use App\Http\Controllers\Site\LeadController;
 use App\Http\Controllers\Site\LegalController;
 use App\Http\Controllers\Site\PageController;
+use App\Http\Controllers\Site\SitemapController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -26,5 +27,8 @@ Route::post('/bilgi-al', [LeadController::class, 'store'])->name('lead.store');
 Route::get('/kvkk', [LegalController::class, 'kvkk'])->name('legal.kvkk');
 Route::get('/cerez-politikasi', [LegalController::class, 'cerez'])->name('legal.cerez');
 Route::get('/hakkimizda', [LegalController::class, 'about'])->name('legal.about');
+
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+Route::get('/robots.txt', [SitemapController::class, 'robots'])->name('robots');
 
 require __DIR__.'/admin.php';
