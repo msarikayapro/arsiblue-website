@@ -1,0 +1,98 @@
+name: Deploy to cPanel
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch: # manuel tetikleme
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, xml, curl, zip, bcmath, fileinfo, gd
+          tools: composer:v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
+
+      - name: Install Composer dependencies (no-dev, optimized)
+        run: composer install --no-dev --optimize-autoloader --prefer-dist --no-interaction
+
+      - name: Install NPM dependencies
+        run: npm ci
+
+      - name: Build frontend assets
+        run: npm run build
+
+      - name: Prepare .env for production
+        run: |
+          # Production .env'i CI'da oluşturma — değerler GitHub Secrets'tan
+          cp .env.example .env
+          sed -i "s|APP_URL=.*|APP_URL=${{ secrets.APP_URL }}|" .env
+          sed -i "s|APP_ENV=.*|APP_ENV=production|" .env
+          sed -i "s|APP_DEBUG=.*|APP_DEBUG=false|" .env
+          sed -i "s|DB_DATABASE=|DB_DATABASE=${{ secrets.DB_DATABASE }}|" .env
+          sed -i "s|DB_USERNAME=|DB_USERNAME=${{ secrets.DB_USERNAME }}|" .env
+          sed -i "s|DB_PASSWORD=|DB_PASSWORD=${{ secrets.DB_PASSWORD }}|" .env
+          sed -i "s|SYSTEM_UPDATE_SECRET=|SYSTEM_UPDATE_SECRET=${{ secrets.SYSTEM_UPDATE_SECRET }}|" .env
+          sed -i "s|ADMIN_INITIAL_PASSWORD=|ADMIN_INITIAL_PASSWORD=${{ secrets.ADMIN_INITIAL_PASSWORD }}|" .env
+          sed -i "s|ADMIN_NOTIFICATION_EMAIL=|ADMIN_NOTIFICATION_EMAIL=${{ secrets.ADMIN_NOTIFICATION_EMAIL }}|" .env
+          # Mail
+          sed -i "s|MAIL_HOST=|MAIL_HOST=${{ secrets.MAIL_HOST }}|" .env
+          sed -i "s|MAIL_USERNAME=|MAIL_USERNAME=${{ secrets.MAIL_USERNAME }}|" .env
+          sed -i "s|MAIL_PASSWORD=|MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }}|" .env
+          sed -i "s|MAIL_FROM_ADDRESS=|MAIL_FROM_ADDRESS=${{ secrets.MAIL_FROM_ADDRESS }}|" .env
+          # APP_KEY production'da .env içinde olmalı (cPanel'de manuel)
+          sed -i "s|APP_KEY=|APP_KEY=${{ secrets.APP_KEY }}|" .env
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./
+          server-dir: ${{ secrets.FTP_SERVER_DIR }} # genelde /public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/node_modules/**
+            **/tests/**
+            **/stitch-designs/**
+            .editorconfig
+            .gitattributes
+            .gitignore
+            arsi-blue-beach-site-spec.md
+            phpunit.xml
+            postcss.config.js
+            tailwind.config.js
+            vite.config.js
+            package*.json
+            README.md
+            CLAUDE.md
+
+      - name: Trigger migration via secret URL
+        run: |
+          # Deploy sonrası system update'i tetikle
+          # Admin login + cookie gerekir, bu nedenle CI'dan kontrol edilemez
+          # Kullanıcı kendisi /admin/system-update-{SECRET} URL'ini ziyaret edecek
+          echo "Deploy tamam. Şimdi tarayıcıda şuna git:"
+          echo "  ${{ secrets.APP_URL }}/admin/system-update-${{ secrets.SYSTEM_UPDATE_SECRET }}"
+          echo "(önce /admin/login ile giriş yapmış olman gerek)"

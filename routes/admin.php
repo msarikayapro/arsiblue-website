@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\SeoController;
 use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\SystemController;
 use App\Http\Controllers\Admin\TrackingController;
 use Illuminate\Support\Facades\Route;
 
@@ -103,5 +104,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Genel Ayarlar
         Route::get('settings', [SettingsController::class, 'edit'])->name('settings.edit');
         Route::put('settings', [SettingsController::class, 'update'])->name('settings.update');
+
+        // Gizli system update rotası — .env'deki SYSTEM_UPDATE_SECRET ile maskelenir
+        // (cPanel SSH erişimi sınırlı olduğu için web üzerinden migration tetiklemek)
+        if ($secret = env('SYSTEM_UPDATE_SECRET')) {
+            Route::get('system-update-'.$secret, [SystemController::class, 'migrate'])
+                ->name('system.update');
+        }
     });
 });
