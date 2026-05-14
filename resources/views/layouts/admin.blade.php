@@ -23,9 +23,10 @@
 
         <ul class="flex-1 overflow-y-auto px-2 pb-4 space-y-1">
             @php
+                // [route name | '#', icon, label, url path key for active matching]
                 $items = [
                     ['admin.dashboard', 'dashboard', 'Panel', null],
-                    ['#', 'edit_document', 'Sayfa İçerikleri', 'pages'],
+                    ['admin.pages.index', 'edit_document', 'Sayfa İçerikleri', 'pages'],
                     ['#', 'local_offer', 'Kampanyalar', 'campaigns'],
                     ['#', 'bed', 'Odalar', 'rooms'],
                     ['#', 'photo_library', 'Galeri', 'gallery'],
@@ -43,9 +44,12 @@
                 @php
                     $active = ($route === 'admin.dashboard' && request()->routeIs('admin.dashboard'))
                         || ($key && str_contains(request()->path(), 'admin/'.$key));
+                    $href = $route !== '#' && \Illuminate\Support\Facades\Route::has($route)
+                        ? route($route)
+                        : '#';
                 @endphp
                 <li>
-                    <a href="{{ $route !== '#' ? route($route) : '#' }}"
+                    <a href="{{ $href }}"
                        class="flex items-center gap-3 rounded-lg px-4 py-3 text-label-md transition-colors
                               {{ $active
                                     ? 'bg-secondary-container text-on-secondary-container font-semibold'

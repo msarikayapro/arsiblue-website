@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PageController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -19,9 +20,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('dashboard', [DashboardController::class, 'index']);
 
-        // Aşağıdaki modüller Adım 5+ ile gelecek
-        // Route::resource('pages', PageController::class);
+        // Sayfa İçerikleri (Adım 5)
+        Route::get('pages', [PageController::class, 'index'])->name('pages.index');
+        Route::get('pages/{slug}', [PageController::class, 'edit'])->name('pages.edit');
+        Route::put('pages/{slug}', [PageController::class, 'update'])->name('pages.update');
+        Route::post('pages/{slug}/sections/{section}', [PageController::class, 'updateSection'])
+            ->name('pages.section.update');
+        Route::post('pages/{slug}/upload-image', [PageController::class, 'uploadImage'])
+            ->name('pages.upload-image');
+
+        // Aşağıdaki modüller Adım 6-8 ile gelecek
         // Route::resource('campaigns', CampaignController::class);
-        // ... (Adım 5-8 sırasında eklenecek)
+        // Route::get('tracking', ...);
+        // ...
     });
 });
