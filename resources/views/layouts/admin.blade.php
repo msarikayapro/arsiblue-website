@@ -28,10 +28,11 @@
                     ['admin.dashboard', 'dashboard', 'Panel', null],
                     ['admin.pages.index', 'edit_document', 'Sayfa İçerikleri', 'pages'],
                     ['admin.campaigns.index', 'local_offer', 'Kampanyalar', 'campaigns'],
+                    // Odalar/Galeri/SSS — Adım 8
+                    ['admin.tracking.index', 'monitoring', 'Tracking & Pixel', 'tracking'],
                     ['#', 'bed', 'Odalar', 'rooms'],
                     ['#', 'photo_library', 'Galeri', 'gallery'],
                     ['#', 'help', 'SSS', 'faqs'],
-                    ['#', 'monitoring', 'Tracking & Pixel', 'tracking'],
                     ['#', 'travel_explore', 'SEO', 'seo'],
                     ['#', 'event_note', 'Event Logları', 'events'],
                     ['#', 'group', 'Lead\'ler', 'leads'],

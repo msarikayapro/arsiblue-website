@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CampaignController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\TrackingController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -40,6 +41,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('campaigns/{campaign}/toggle-active', [CampaignController::class, 'toggleActive'])->name('campaigns.toggle-active');
         Route::post('campaigns/{campaign}/upload-image', [CampaignController::class, 'uploadImage'])->name('campaigns.upload-image');
 
-        // Diğer modüller Adım 7-8 ile gelecek
+        // Tracking & Pixel (Adım 7)
+        Route::get('tracking', [TrackingController::class, 'index'])->name('tracking.index');
+        Route::put('tracking/meta', [TrackingController::class, 'updateMeta'])->name('tracking.meta');
+        Route::put('tracking/google', [TrackingController::class, 'updateGoogle'])->name('tracking.google');
+        Route::put('tracking/tiktok', [TrackingController::class, 'updateTiktok'])->name('tracking.tiktok');
+        Route::post('tracking/test-capi', [TrackingController::class, 'testCapi'])->name('tracking.test-capi');
+        Route::get('tracking/health', [TrackingController::class, 'health'])->name('tracking.health');
+
+        // Diğer modüller Adım 8 ile gelecek
     });
 });
