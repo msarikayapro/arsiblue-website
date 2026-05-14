@@ -27,7 +27,7 @@
                 $items = [
                     ['admin.dashboard', 'dashboard', 'Panel', null],
                     ['admin.pages.index', 'edit_document', 'Sayfa İçerikleri', 'pages'],
-                    ['#', 'local_offer', 'Kampanyalar', 'campaigns'],
+                    ['admin.campaigns.index', 'local_offer', 'Kampanyalar', 'campaigns'],
                     ['#', 'bed', 'Odalar', 'rooms'],
                     ['#', 'photo_library', 'Galeri', 'gallery'],
                     ['#', 'help', 'SSS', 'faqs'],

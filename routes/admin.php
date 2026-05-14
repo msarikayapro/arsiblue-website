@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\CampaignController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PageController;
 use Illuminate\Support\Facades\Route;
@@ -29,9 +30,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('pages/{slug}/upload-image', [PageController::class, 'uploadImage'])
             ->name('pages.upload-image');
 
-        // Aşağıdaki modüller Adım 6-8 ile gelecek
-        // Route::resource('campaigns', CampaignController::class);
-        // Route::get('tracking', ...);
-        // ...
+        // Kampanyalar (Adım 6)
+        Route::get('campaigns', [CampaignController::class, 'index'])->name('campaigns.index');
+        Route::get('campaigns/create', [CampaignController::class, 'create'])->name('campaigns.create');
+        Route::post('campaigns', [CampaignController::class, 'store'])->name('campaigns.store');
+        Route::get('campaigns/{campaign}/edit', [CampaignController::class, 'edit'])->name('campaigns.edit');
+        Route::put('campaigns/{campaign}', [CampaignController::class, 'update'])->name('campaigns.update');
+        Route::delete('campaigns/{campaign}', [CampaignController::class, 'destroy'])->name('campaigns.destroy');
+        Route::post('campaigns/{campaign}/toggle-active', [CampaignController::class, 'toggleActive'])->name('campaigns.toggle-active');
+        Route::post('campaigns/{campaign}/upload-image', [CampaignController::class, 'uploadImage'])->name('campaigns.upload-image');
+
+        // Diğer modüller Adım 7-8 ile gelecek
     });
 });
