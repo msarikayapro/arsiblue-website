@@ -23,3 +23,63 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+# ============================================================================
+# Performance — Cache Headers (Litespeed/Apache)
+# ============================================================================
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # Build assets — uzun cache (vite hash'liyor zaten)
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+
+    # Görseller
+    ExpiresByType image/webp "access plus 6 months"
+    ExpiresByType image/jpeg "access plus 6 months"
+    ExpiresByType image/png "access plus 6 months"
+    ExpiresByType image/svg+xml "access plus 6 months"
+    ExpiresByType image/x-icon "access plus 1 year"
+
+    # Fontlar
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+
+    # HTML
+    ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+    # Static asset'lere immutable cache
+    <FilesMatch "\.(css|js|webp|woff2)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+
+    # Güvenlik header'ları
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# ============================================================================
+# Compression
+# ============================================================================
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+# Litespeed-spesifik (cPanel/Litespeed sunucularda otomatik aktif)
+<IfModule LiteSpeed>
+    CacheEnable public /
+    CacheDisable /admin
+    CacheDisable /api
+    CacheLookup public on
+</IfModule>
+
+# Sensitive file blok
+<FilesMatch "(^\.env|composer\.(json|lock)|package(-lock)?\.json|webpack\.config\.js)">
+    Require all denied
+</FilesMatch>
