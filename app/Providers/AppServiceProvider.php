@@ -11,6 +11,7 @@ use App\Models\Room;
 use App\Models\Setting;
 use App\View\Composers\GlobalDataComposer;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -23,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        // Eski MySQL/MariaDB sürümlerinde utf8mb4 + 255 char index = 1020 byte > 1000 byte limit.
+        // 191 → 191×4 = 764 byte, güvenli sınır.
+        Schema::defaultStringLength(191);
+
         // Tüm site/* view'larına $seo, $schemaType, $schemaData inject et
         View::composer(['layouts.site', 'site.*'], GlobalDataComposer::class);
 
