@@ -10,21 +10,41 @@
     </section>
 
     @php
-        // İçeri görsel sahip kategorileri kategori sırasına göre filtrele
+        // İçinde aktif görsel olan kategoriler — kategori sıra'ına göre
         $visibleCategories = $categories->filter(fn ($name, $slug) => $items->has($slug) && $items[$slug]->isNotEmpty());
-        $firstSlug = $visibleCategories->keys()->first() ?? 'all';
+
+        // "Tümü" için: tüm görselleri kategori sırasında düz bir liste yap
+        $allItems = $visibleCategories->flatMap(fn ($name, $slug) => $items[$slug]);
     @endphp
-    <section x-data="{ tab: '{{ $firstSlug }}', lightbox: null }"
+    <section x-data="{ tab: 'all', lightbox: null }"
              class="py-section-gap-mobile max-w-container-max-width mx-auto px-margin-mobile">
 
-        @if ($visibleCategories->isNotEmpty())
+        @if ($allItems->isNotEmpty())
             {{-- Category tabs --}}
             <div class="flex flex-wrap justify-center gap-2 mb-8">
+                <button @click="tab = 'all'" type="button"
+                        class="px-4 py-2 rounded-full text-label-md font-semibold transition border"
+                        :class="tab === 'all' ? 'bg-primary text-on-primary border-primary' : 'bg-surface-container-lowest text-on-surface border-outline-variant hover:border-primary'">
+                    Tümü ({{ $allItems->count() }})
+                </button>
                 @foreach ($visibleCategories as $slug => $name)
                     <button @click="tab = '{{ $slug }}'" type="button"
                             class="px-4 py-2 rounded-full text-label-md font-semibold transition border"
                             :class="tab === '{{ $slug }}' ? 'bg-primary text-on-primary border-primary' : 'bg-surface-container-lowest text-on-surface border-outline-variant hover:border-primary'">
                         {{ $name }} ({{ $items[$slug]->count() }})
+                    </button>
+                @endforeach
+            </div>
+
+            {{-- "Tümü" grid --}}
+            <div x-show="tab === 'all'"
+                 class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                @foreach ($allItems as $item)
+                    <button @click="lightbox = '{{ asset('storage/uploads/gallery/'.$item->image_path) }}'" type="button"
+                            class="aspect-square rounded-2xl overflow-hidden group">
+                        <img src="{{ asset('storage/uploads/gallery/'.$item->image_path) }}"
+                             alt="{{ $item->alt_text }}" loading="lazy"
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                     </button>
                 @endforeach
             </div>
