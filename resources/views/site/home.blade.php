@@ -63,9 +63,17 @@
                     {!! $page->getContent('about_text') !!}
                 </div>
             </div>
-            <div class="bg-sand rounded-3xl aspect-square flex items-center justify-center">
-                <span class="material-symbols-outlined text-primary text-9xl opacity-30">villa</span>
-            </div>
+            @php $aboutImg = $page?->getContent('about_image'); @endphp
+            @if ($aboutImg)
+                <img src="{{ asset('storage/uploads/pages/'.$aboutImg) }}"
+                     alt="{{ $page?->getContent('about_title') ?? 'Akdeniz\'in Mavisinde Huzur Dolu Bir Tatil' }}"
+                     class="rounded-3xl aspect-square w-full object-cover ambient-shadow-lvl2"
+                     loading="lazy">
+            @else
+                <div class="bg-sand rounded-3xl aspect-square flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary text-9xl opacity-30">villa</span>
+                </div>
+            @endif
         </section>
     @endif
 

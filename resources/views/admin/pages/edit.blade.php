@@ -14,6 +14,7 @@
         'trust_strip' => 'Güven Şeridi (5 madde)',
         'about_title' => 'Hakkımızda Başlık',
         'about_text' => 'Hakkımızda Metni',
+        'about_image' => 'Hakkımızda Görseli',
         'why_us' => 'Neden Biz? (kart listesi)',
         'final_cta_title' => 'Final CTA Başlık',
         'final_cta_subtitle' => 'Final CTA Alt Metin',

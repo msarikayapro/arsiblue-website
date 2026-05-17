@@ -48,6 +48,7 @@ class PageContentsSeeder extends Seeder
             ], JSON_UNESCAPED_UNICODE)],
             ['about_title', 'text', 'Akdeniz\'in Mavisinde Huzur Dolu Bir Tatil'],
             ['about_text', 'html', '<p>Arsi Blue Beach Hotel, Alanya Mahmutlar\'da denize sıfır konumda 4 yıldızlı aile odaklı bir tatil otelidir. Konforlu odalar, geniş havuz alanları ve her şey dahil hizmetiyle ailenize huzurlu bir Akdeniz tatili sunar.</p>'],
+            ['about_image', 'image', ''],
             ['why_us', 'json', json_encode([
                 ['icon' => 'verified', 'title' => 'Yetkili Acenta', 'text' => 'Arsi Blue Beach\'in yetkili acentasıyız. Şeffaf süreç, hızlı yanıt.'],
                 ['icon' => 'payments', 'title' => 'Sadece Ön Ödeme', 'text' => 'Tüm rezervasyonlar ön ödemeli olarak alınır. Saklı ücret yok.'],
