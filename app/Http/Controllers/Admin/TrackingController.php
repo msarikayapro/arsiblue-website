@@ -4,16 +4,20 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\EventLog;
+use App\Services\MetaCapiService;
 use App\Services\SettingService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class TrackingController extends Controller
 {
-    public function __construct(private SettingService $settings)
-    {
+    public function __construct(
+        private SettingService $settings,
+        private MetaCapiService $capi,
+    ) {
     }
 
     public function index(): View
@@ -111,10 +115,11 @@ class TrackingController extends Controller
 
     /**
      * Meta CAPI test event endpoint'i.
-     * Gerçek implementasyon Adım 11'de MetaCapiService ile gelecek.
-     * Şu an placeholder — settings doğruluğunu kontrol eder, sonuç mock döner.
+     * Geçici bir EventLog oluşturup MetaCapiService ile Meta'ya gerçek bir
+     * TestEvent gönderir. test_event_code girilmişse Events Manager →
+     * "Test Events" sekmesinde anında görünür.
      */
-    public function testCapi(): JsonResponse
+    public function testCapi(Request $request): JsonResponse
     {
         $pixelId = setting('meta_pixel_id');
         $token = setting('meta_capi_token');
@@ -126,11 +131,53 @@ class TrackingController extends Controller
             ], 422);
         }
 
-        // TODO Adım 11: MetaCapiService->send('TestEvent', uuid, [], userData)
+        // CAPI active toggle'ı kapalıysa MetaCapiService::send() kısa devre yapar;
+        // test sırasında geçici olarak true kabul etmek için service'i bypass etmiyoruz —
+        // admin'e doğru sinyal vermek için aktif olmasını gerektiriyoruz.
+        if (! setting('meta_capi_active')) {
+            return response()->json([
+                'ok' => false,
+                'message' => 'Meta CAPI ayarı pasif. Önce "CAPI aktif" toggle\'ını açıp kaydedin.',
+            ], 422);
+        }
+
+        $eventId = (string) Str::uuid();
+        $event = EventLog::create([
+            'event_name' => 'test_capi',
+            'event_id' => $eventId,
+            'user_ip' => $request->ip(),
+            'current_page' => '/admin/tracking',
+            'payload' => ['source' => 'admin_test_button'],
+            'created_at' => now(),
+        ]);
+
+        $ok = $this->capi->send(
+            eventName: 'TestEvent',
+            eventId: $eventId,
+            event: $event,
+            userData: [],
+            customData: ['source' => 'admin_test_button'],
+        );
+
+        if (! $ok) {
+            return response()->json([
+                'ok' => false,
+                'message' => 'Test gönderimi başarısız oldu. storage/logs/laravel.log → "Meta CAPI failed" satırını kontrol edin.',
+            ], 500);
+        }
+
+        $msg = 'Test event Meta\'ya gönderildi.';
+        if ($testCode = setting('meta_capi_test_code')) {
+            $msg .= " Events Manager → Test Events sekmesinde test code '{$testCode}' ile görmelisiniz.";
+        } else {
+            $msg .= ' (test_event_code girilmediği için Events Manager → "Overview" sekmesinde görünecek.)';
+        }
+
         return response()->json([
             'ok' => true,
-            'message' => 'Test event gönderimi Adım 11 ile aktifleşecek. Şimdilik settings validation geçti.',
-            'pixel_id' => substr($pixelId, 0, 4) . '...' . substr($pixelId, -4),
+            'message' => $msg,
+            'pixel_id' => substr($pixelId, 0, 4).'...'.substr($pixelId, -4),
+            'event_id' => $eventId,
         ]);
     }
 

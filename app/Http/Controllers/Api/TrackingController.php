@@ -64,7 +64,15 @@ class TrackingController extends Controller
         // event_mapping'e göre Meta CAPI gönder
         // page_view: Pixel zaten client-side fire ediyor, CAPI'den göndermiyoruz
         // (çift sayım önlemek için — admin'in manuel override'ı için active flag yine de kontrol edilir)
-        $mapping = setting('event_mapping') ?? [];
+        // Admin formu henüz kaydedilmemişse default mapping'i kullan ki click event'ler
+        // CAPI'ye gitsin (admin aksini yazana kadar)
+        $defaultMapping = [
+            'whatsapp_click' => ['meta' => 'Lead', 'active' => true],
+            'phone_click' => ['meta' => 'Contact', 'active' => true],
+            'lead_form_submit' => ['meta' => 'Lead', 'active' => true],
+            'campaign_click' => ['meta' => 'InitiateCheckout', 'active' => true],
+        ];
+        $mapping = setting('event_mapping') ?: $defaultMapping;
         $cfg = $mapping[$data['event_name']] ?? null;
 
         if ($cfg && ($cfg['active'] ?? false) && $data['event_name'] !== 'page_view') {
