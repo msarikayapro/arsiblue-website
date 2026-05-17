@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventLogController;
 use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\GalleryCategoryController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\LeadController;
 use App\Http\Controllers\Admin\PageController;
@@ -66,6 +67,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('rooms/{room}/upload-image', [RoomController::class, 'uploadImage'])->name('rooms.upload-image');
 
         // Galeri
+        // Kategori CRUD — gallery/{gallery} route'undan önce gelmeli!
+        Route::get('gallery/categories', [GalleryCategoryController::class, 'index'])->name('gallery.categories.index');
+        Route::post('gallery/categories', [GalleryCategoryController::class, 'store'])->name('gallery.categories.store');
+        Route::put('gallery/categories/{category}', [GalleryCategoryController::class, 'update'])->name('gallery.categories.update');
+        Route::delete('gallery/categories/{category}', [GalleryCategoryController::class, 'destroy'])->name('gallery.categories.destroy');
+        Route::post('gallery/categories/reorder', [GalleryCategoryController::class, 'reorder'])->name('gallery.categories.reorder');
+
         Route::get('gallery', [GalleryController::class, 'index'])->name('gallery.index');
         Route::post('gallery/upload', [GalleryController::class, 'upload'])->name('gallery.upload');
         Route::put('gallery/{gallery}', [GalleryController::class, 'update'])->name('gallery.update');

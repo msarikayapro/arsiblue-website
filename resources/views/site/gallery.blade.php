@@ -9,26 +9,31 @@
         </div>
     </section>
 
-    <section x-data="{ tab: '{{ $items->keys()->first() ?? 'all' }}', lightbox: null }"
+    @php
+        // İçeri görsel sahip kategorileri kategori sırasına göre filtrele
+        $visibleCategories = $categories->filter(fn ($name, $slug) => $items->has($slug) && $items[$slug]->isNotEmpty());
+        $firstSlug = $visibleCategories->keys()->first() ?? 'all';
+    @endphp
+    <section x-data="{ tab: '{{ $firstSlug }}', lightbox: null }"
              class="py-section-gap-mobile max-w-container-max-width mx-auto px-margin-mobile">
 
-        @if ($items->isNotEmpty())
+        @if ($visibleCategories->isNotEmpty())
             {{-- Category tabs --}}
             <div class="flex flex-wrap justify-center gap-2 mb-8">
-                @foreach ($items as $cat => $catItems)
-                    <button @click="tab = '{{ $cat }}'" type="button"
+                @foreach ($visibleCategories as $slug => $name)
+                    <button @click="tab = '{{ $slug }}'" type="button"
                             class="px-4 py-2 rounded-full text-label-md font-semibold transition border"
-                            :class="tab === '{{ $cat }}' ? 'bg-primary text-on-primary border-primary' : 'bg-surface-container-lowest text-on-surface border-outline-variant hover:border-primary'">
-                        {{ ucfirst(str_replace('_', ' ', $cat)) }} ({{ $catItems->count() }})
+                            :class="tab === '{{ $slug }}' ? 'bg-primary text-on-primary border-primary' : 'bg-surface-container-lowest text-on-surface border-outline-variant hover:border-primary'">
+                        {{ $name }} ({{ $items[$slug]->count() }})
                     </button>
                 @endforeach
             </div>
 
             {{-- Image grid per category --}}
-            @foreach ($items as $cat => $catItems)
-                <div x-show="tab === '{{ $cat }}'" x-cloak
+            @foreach ($visibleCategories as $slug => $name)
+                <div x-show="tab === '{{ $slug }}'" x-cloak
                      class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                    @foreach ($catItems as $item)
+                    @foreach ($items[$slug] as $item)
                         <button @click="lightbox = '{{ asset('storage/uploads/gallery/'.$item->image_path) }}'" type="button"
                                 class="aspect-square rounded-2xl overflow-hidden group">
                             <img src="{{ asset('storage/uploads/gallery/'.$item->image_path) }}"
@@ -54,6 +59,8 @@
                 <p>Henüz galeri görseli eklenmemiş.</p>
             </div>
         @endif
+
+        {{-- Lightbox (kategori varsa veya yoksa görünür kalır boşken kapalı) --}}
     </section>
 
 @endsection

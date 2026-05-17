@@ -3,6 +3,14 @@
 @section('title', 'Galeri')
 @section('page-title', 'Galeri')
 
+@section('topbar-right')
+    <a href="{{ route('admin.gallery.categories.index') }}"
+       class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-outline text-primary text-label-md hover:bg-primary-fixed transition">
+        <span class="material-symbols-outlined text-[18px]">folder_managed</span>
+        Kategorileri Yönet
+    </a>
+@endsection
+
 @section('content')
     <div class="max-w-container-max-width mx-auto space-y-6">
 
@@ -14,8 +22,8 @@
                     <div>
                         <label class="block text-label-md text-on-surface mb-2">Kategori *</label>
                         <select name="category" required class="w-full px-4 py-3 rounded-xl bg-surface-container-low border-outline-variant focus:border-primary focus:ring-0 min-h-[48px]">
-                            @foreach (\App\Http\Controllers\Admin\GalleryController::CATEGORIES as $cat)
-                                <option value="{{ $cat }}">{{ ucfirst(str_replace('_', ' ', $cat)) }}</option>
+                            @foreach ($categories->where('is_active', true) as $cat)
+                                <option value="{{ $cat->slug }}">{{ $cat->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -38,10 +46,10 @@
                class="px-3 py-1.5 rounded-full text-label-md border {{ ! request('category') ? 'bg-primary text-on-primary border-primary' : 'bg-surface-container-lowest text-on-surface border-outline-variant' }}">
                 Tümü ({{ array_sum($counts) }})
             </a>
-            @foreach (\App\Http\Controllers\Admin\GalleryController::CATEGORIES as $cat)
-                <a href="{{ route('admin.gallery.index', ['category' => $cat]) }}"
-                   class="px-3 py-1.5 rounded-full text-label-md border {{ request('category') === $cat ? 'bg-primary text-on-primary border-primary' : 'bg-surface-container-lowest text-on-surface border-outline-variant' }}">
-                    {{ ucfirst(str_replace('_', ' ', $cat)) }} ({{ $counts[$cat] ?? 0 }})
+            @foreach ($categories as $cat)
+                <a href="{{ route('admin.gallery.index', ['category' => $cat->slug]) }}"
+                   class="px-3 py-1.5 rounded-full text-label-md border {{ request('category') === $cat->slug ? 'bg-primary text-on-primary border-primary' : 'bg-surface-container-lowest text-on-surface border-outline-variant' }} {{ ! $cat->is_active ? 'opacity-50' : '' }}">
+                    {{ $cat->name }} ({{ $counts[$cat->slug] ?? 0 }})
                 </a>
             @endforeach
         </div>

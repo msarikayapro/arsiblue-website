@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 #[Fillable(['category', 'image_path', 'thumbnail_path', 'alt_text', 'sort_order', 'is_active'])]
 class Gallery extends Model
@@ -14,6 +15,11 @@ class Gallery extends Model
     protected function casts(): array
     {
         return ['is_active' => 'boolean'];
+    }
+
+    public function categoryModel(): BelongsTo
+    {
+        return $this->belongsTo(GalleryCategory::class, 'category', 'slug');
     }
 
     public function scopeActive(Builder $query): Builder

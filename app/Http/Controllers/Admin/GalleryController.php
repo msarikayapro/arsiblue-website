@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Gallery;
+use App\Models\GalleryCategory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,10 +13,10 @@ use Illuminate\View\View;
 
 class GalleryController extends Controller
 {
-    public const CATEGORIES = ['havuz', 'plaj', 'oda', 'yemek', 'animasyon', 'dis_mekan'];
-
     public function index(Request $request): View
     {
+        $categories = GalleryCategory::ordered()->get();
+
         $query = Gallery::orderBy('category')->orderBy('sort_order');
         if ($cat = $request->query('category')) {
             $query->where('category', $cat);
@@ -23,7 +24,7 @@ class GalleryController extends Controller
         $items = $query->paginate(60)->withQueryString();
         $counts = Gallery::selectRaw('category, count(*) as c')->groupBy('category')->pluck('c', 'category')->toArray();
 
-        return view('admin.gallery.index', compact('items', 'counts'));
+        return view('admin.gallery.index', compact('items', 'counts', 'categories'));
     }
 
     /**
@@ -31,8 +32,10 @@ class GalleryController extends Controller
      */
     public function upload(Request $request): RedirectResponse
     {
+        $validSlugs = GalleryCategory::active()->pluck('slug')->toArray();
+
         $request->validate([
-            'category' => ['required', 'in:'.implode(',', self::CATEGORIES)],
+            'category' => ['required', 'in:'.implode(',', $validSlugs)],
             'images' => ['required', 'array', 'min:1'],
             'images.*' => ['image', 'mimes:jpg,jpeg,png,webp', 'max:6144'],
         ]);
@@ -58,11 +61,13 @@ class GalleryController extends Controller
 
     public function update(Request $request, Gallery $gallery): RedirectResponse
     {
+        $validSlugs = GalleryCategory::pluck('slug')->toArray();
+
         $data = $request->validate([
             'alt_text' => ['nullable', 'string', 'max:255'],
             'sort_order' => ['nullable', 'integer'],
             'is_active' => ['nullable', 'boolean'],
-            'category' => ['nullable', 'in:'.implode(',', self::CATEGORIES)],
+            'category' => ['nullable', 'in:'.implode(',', $validSlugs)],
         ]);
         $data['is_active'] = $request->boolean('is_active');
         $gallery->update($data);
