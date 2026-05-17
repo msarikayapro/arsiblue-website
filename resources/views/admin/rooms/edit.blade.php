@@ -64,6 +64,83 @@
             </div>
         </x-admin.section-card>
 
+        <x-admin.section-card icon="image" title="Oda Görseli" variant="secondary">
+            @if ($isNew)
+                <p class="text-body-md text-on-surface-variant italic">
+                    Görsel yükleme için önce odayı oluşturun ("Kaydet" butonu).
+                </p>
+            @else
+                <div x-data="{
+                        image: @js($room->main_image ?? ''),
+                        uploading: false,
+                        error: null,
+                        async upload(event) {
+                            const file = event.target.files[0];
+                            if (!file) return;
+                            this.uploading = true;
+                            this.error = null;
+                            const fd = new FormData();
+                            fd.append('image', file);
+                            fd.append('_token', @js(csrf_token()));
+                            try {
+                                const res = await fetch(@js(route('admin.rooms.upload-image', $room)), {
+                                    method: 'POST',
+                                    body: fd,
+                                    headers: { 'Accept': 'application/json' }
+                                });
+                                if (!res.ok) {
+                                    const body = await res.json().catch(() => ({}));
+                                    throw new Error(body.message || 'Yükleme başarısız (HTTP ' + res.status + ')');
+                                }
+                                const data = await res.json();
+                                this.image = data.filename;
+                            } catch (e) {
+                                this.error = e.message;
+                            } finally {
+                                this.uploading = false;
+                                event.target.value = '';
+                            }
+                        },
+                        imageUrl(name) {
+                            return name ? @js(asset('storage/uploads/rooms')) + '/' + name : '';
+                        }
+                     }">
+                    <input type="hidden" name="main_image" :value="image">
+
+                    <div class="relative group aspect-video rounded-2xl overflow-hidden border-2 border-dashed border-outline-variant bg-surface-container flex flex-col items-center justify-center">
+                        <template x-if="image">
+                            <img :src="imageUrl(image)" alt="" class="absolute inset-0 w-full h-full object-cover">
+                        </template>
+                        <template x-if="!image">
+                            <div class="text-center text-on-surface-variant py-12">
+                                <span class="material-symbols-outlined text-4xl block mb-2">add_photo_alternate</span>
+                                <p class="text-body-md">Oda görseli yükle (JPG, PNG, WebP — max 4MB)</p>
+                            </div>
+                        </template>
+                        <label class="absolute inset-0 cursor-pointer bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white">
+                            <span class="material-symbols-outlined text-3xl mb-2">photo_camera</span>
+                            <span class="text-label-md" x-text="uploading ? 'Yükleniyor…' : 'Yeni görsel seç'"></span>
+                            <input type="file" accept="image/*" class="hidden" @change="upload($event)" :disabled="uploading">
+                        </label>
+                    </div>
+
+                    <div class="mt-3 flex items-center justify-between text-xs">
+                        <span class="text-on-surface-variant truncate" x-show="image" x-text="image"></span>
+                        <button type="button" x-show="image"
+                                @click="image = ''"
+                                class="text-error hover:underline">Görseli kaldır</button>
+                    </div>
+
+                    <p x-show="error" x-cloak x-text="error"
+                       class="mt-2 text-xs text-error bg-error-container/30 border border-error/30 rounded-lg px-3 py-2"></p>
+
+                    <p class="text-[11px] text-on-surface-variant italic mt-3">
+                        Önerilen boyut: 1200×800 px (3:2 yatay). Değişiklikleri kaydetmek için aşağıdaki "Kaydet" butonuna basın.
+                    </p>
+                </div>
+            @endif
+        </x-admin.section-card>
+
         <x-admin.section-card icon="public" title="Yayın" variant="tertiary">
             <div class="grid grid-cols-2 gap-4">
                 <div>
