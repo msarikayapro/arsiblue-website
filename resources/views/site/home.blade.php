@@ -99,14 +99,14 @@
         <div class="max-w-container-max-width mx-auto">
             <div class="text-center mb-12">
                 <h2 class="text-display-lg md:text-4xl font-bold text-primary mb-4">Su, Eğlence, Lezzet — Her Şey Dahil</h2>
-                <p class="text-body-lg text-on-surface-variant">3 havuz, aqua park, çakıllı plaj ve günlük animasyon</p>
+                <p class="text-body-lg text-on-surface-variant">3 havuz, aqua park, mavi sahil ve günlük animasyon</p>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 @foreach ([
                     ['icon' => 'water', 'title' => 'Aqua Park', 'desc' => 'Renkli kaydıraklarla eğlence'],
                     ['icon' => 'pool', 'title' => 'Çocuk Havuzu', 'desc' => 'Güvenli, sığ alan'],
                     ['icon' => 'roofing', 'title' => 'Kapalı Havuz', 'desc' => 'Yıl boyu açık'],
-                    ['icon' => 'beach_access', 'title' => 'Çakıllı Plaj', 'desc' => 'Yakın mesafede'],
+                    ['icon' => 'beach_access', 'title' => 'Mavi Sahil', 'desc' => 'Yakın mesafede'],
                 ] as $facility)
                     <div class="bg-surface-container-lowest rounded-2xl p-6 text-center ambient-shadow-lvl1">
                         <span class="material-symbols-outlined text-primary text-5xl mb-3">{{ $facility['icon'] }}</span>

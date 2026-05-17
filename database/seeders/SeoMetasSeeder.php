@@ -21,7 +21,7 @@ class SeoMetasSeeder extends Seeder
             ['odalar', 'Odalarımız | Arsi Blue Beach Hotel',
                 'Standart, aile ve müsaitliğe göre deniz manzaralı oda seçenekleri. Konforlu döşeme, klima, Wi-Fi.'],
             ['tesisler', 'Tesisler & Aktiviteler | Arsi Blue Beach',
-                '3 havuz, aqua park, kapalı havuz, çakıllı plaj, günlük animasyon ve şovlar.'],
+                '3 havuz, aqua park, kapalı havuz, mavi sahil, günlük animasyon ve şovlar.'],
             ['galeri', 'Galeri | Arsi Blue Beach Alanya',
                 'Otelimizin havuz, plaj, oda ve sosyal alanlarından fotoğraflar.'],
             ['iletisim', 'İletişim | Arsi Blue Beach Hotel',

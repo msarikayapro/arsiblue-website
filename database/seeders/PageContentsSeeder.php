@@ -148,12 +148,12 @@ class PageContentsSeeder extends Seeder
 
         $this->upsert($page->id, [
             ['hero_title', 'text', 'Su, Eğlence, Lezzet — Her Şey Dahil'],
-            ['hero_subtitle', 'text', '3 havuz, aqua park, çakıllı plaj ve günlük animasyon programı'],
+            ['hero_subtitle', 'text', '3 havuz, aqua park, mavi sahil ve günlük animasyon programı'],
             ['facilities', 'json', json_encode([
                 ['icon' => 'pool', 'title' => 'Aqua Park & Yetişkin Havuzu', 'text' => 'Renkli kaydıraklar ve geniş yetişkin havuz alanı.'],
                 ['icon' => 'child_care', 'title' => 'Çocuk Havuzu', 'text' => 'Güvenli, sığ çocuk havuzu.'],
                 ['icon' => 'roofing', 'title' => 'Kapalı Havuz', 'text' => 'Yıl boyu açık kapalı havuz.'],
-                ['icon' => 'beach_access', 'title' => 'Çakıllı Plaj', 'text' => 'Otele yakın mesafede temiz çakıllı plaj.'],
+                ['icon' => 'beach_access', 'title' => 'Mavi Sahil', 'text' => 'Otele yakın mesafede berrak Akdeniz sahili.'],
             ], JSON_UNESCAPED_UNICODE)],
         ]);
     }
