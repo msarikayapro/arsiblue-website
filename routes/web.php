@@ -35,11 +35,10 @@ Route::get('/robots.txt', [SitemapController::class, 'robots'])->name('robots');
 // TEMP: tek seferlik kurulum route'u — kullandıktan SONRA bu blok silinecek
 Route::get('/__setup-x9k2m7p4q8r3v6n1', function () {
     $out = [];
-    Artisan::call('migrate', ['--force' => true]);
-    $out[] = "MIGRATE:\n" . Artisan::output();
 
-    Artisan::call('db:seed', ['--force' => true]);
-    $out[] = "SEED:\n" . Artisan::output();
+    // DB'deki tüm tabloları drop'la ve sıfırdan migrate + seed çalıştır
+    Artisan::call('migrate:fresh', ['--force' => true, '--seed' => true]);
+    $out[] = "MIGRATE:FRESH + SEED:\n" . Artisan::output();
 
     Artisan::call('storage:link');
     $out[] = "STORAGE LINK:\n" . Artisan::output();
