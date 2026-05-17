@@ -8,6 +8,7 @@ use App\Http\Controllers\Site\LeadController;
 use App\Http\Controllers\Site\LegalController;
 use App\Http\Controllers\Site\PageController;
 use App\Http\Controllers\Site\SitemapController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -30,5 +31,29 @@ Route::get('/hakkimizda', [LegalController::class, 'about'])->name('legal.about'
 
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 Route::get('/robots.txt', [SitemapController::class, 'robots'])->name('robots');
+
+// TEMP: tek seferlik kurulum route'u — kullandıktan SONRA bu blok silinecek
+Route::get('/__setup-x9k2m7p4q8r3v6n1', function () {
+    $out = [];
+    Artisan::call('migrate', ['--force' => true]);
+    $out[] = "MIGRATE:\n" . Artisan::output();
+
+    Artisan::call('db:seed', ['--force' => true]);
+    $out[] = "SEED:\n" . Artisan::output();
+
+    Artisan::call('storage:link');
+    $out[] = "STORAGE LINK:\n" . Artisan::output();
+
+    Artisan::call('config:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');
+    Artisan::call('config:cache');
+    Artisan::call('route:cache');
+    Artisan::call('view:cache');
+    $out[] = "CACHE REBUILT";
+
+    return '<pre>' . e(implode("\n\n", $out)) . '</pre>';
+});
 
 require __DIR__.'/admin.php';
