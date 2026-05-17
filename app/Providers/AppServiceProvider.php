@@ -12,6 +12,7 @@ use App\Models\Setting;
 use App\View\Composers\GlobalDataComposer;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,6 +25,12 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        // Cloudflare arkasında flexible SSL ile origin'e HTTP gelse bile
+        // tüm asset/route/url helper'ları https:// üretsin (mixed content fix).
+        if (app()->environment('production')) {
+            URL::forceScheme('https');
+        }
+
         // Eski MySQL/MariaDB sürümlerinde utf8mb4 + 255 char index = 1020 byte > 1000 byte limit.
         // 191 → 191×4 = 764 byte, güvenli sınır.
         Schema::defaultStringLength(191);
