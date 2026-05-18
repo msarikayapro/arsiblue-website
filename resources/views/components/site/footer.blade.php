@@ -97,5 +97,6 @@
         @if (setting('agency_name'))
             · {{ setting('agency_name') }}
         @endif
+        · <a href="{{ route('admin.login') }}" class="hover:text-primary transition">Yönetim Paneli</a>
     </div>
 </footer>
