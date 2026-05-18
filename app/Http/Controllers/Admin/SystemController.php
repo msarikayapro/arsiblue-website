@@ -28,6 +28,9 @@ class SystemController extends Controller
         Artisan::call('migrate', ['--force' => true]);
         $output['migrate'] = Artisan::output();
 
+        Artisan::call('db:seed', ['--class' => 'AdminSeeder', '--force' => true]);
+        $output['seed_admins'] = Artisan::output();
+
         Artisan::call('config:cache');
         $output['config'] = Artisan::output();
 

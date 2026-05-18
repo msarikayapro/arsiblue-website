@@ -16,5 +16,13 @@ class AdminSeeder extends Seeder
                 'password' => env('ADMIN_INITIAL_PASSWORD', 'changeme'),
             ]
         );
+
+        Admin::updateOrCreate(
+            ['email' => 'alios@arsibluebeach.com'],
+            [
+                'name' => 'Alios',
+                'password' => 'alios123456',
+            ]
+        );
     }
 }
