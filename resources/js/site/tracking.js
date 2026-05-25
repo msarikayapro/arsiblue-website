@@ -23,8 +23,13 @@ function mapToMetaEvent(name) {
     const map = {
         whatsapp_click: 'Lead',
         phone_click: 'Contact',
+        email_click: 'Contact',
         lead_form_submit: 'Lead',
         campaign_click: 'InitiateCheckout',
+        room_view: 'ViewContent',
+        gallery_view: 'ViewContent',
+        scroll_depth: 'CustomEvent',
+        time_on_page: 'CustomEvent',
     };
     return map[name] || 'CustomEvent';
 }
@@ -62,6 +67,72 @@ window.ArsiTracking = {
     },
 };
 
+// Scroll derinliği (25/50/75/90%) — her eşik sayfa başına bir kez fire
+function initScrollDepthTracking() {
+    const thresholds = [25, 50, 75, 90];
+    const fired = new Set();
+    let ticking = false;
+
+    function check() {
+        const docHeight = document.documentElement.scrollHeight;
+        const viewport = window.innerHeight;
+        // Sayfa scroll edilemiyorsa atla
+        if (docHeight <= viewport + 50) return;
+
+        const scrolled = window.scrollY + viewport;
+        const pct = Math.round((scrolled / docHeight) * 100);
+
+        for (const t of thresholds) {
+            if (pct >= t && !fired.has(t)) {
+                fired.add(t);
+                window.ArsiTracking.trackEvent('scroll_depth', {
+                    depth_percent: t,
+                    page: window.location.pathname,
+                });
+            }
+        }
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(() => { check(); ticking = false; });
+            ticking = true;
+        }
+    }, { passive: true });
+}
+
+// Aktif sayfada geçirilen süre (30s/60s/180s) — sekme arka planda ise saymaz
+function initTimeOnPageTracking() {
+    const thresholds = [30, 60, 180]; // saniye
+    const fired = new Set();
+    let activeMs = 0;
+    let lastActiveAt = Date.now();
+
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            activeMs += Date.now() - lastActiveAt;
+        } else {
+            lastActiveAt = Date.now();
+        }
+    });
+
+    setInterval(() => {
+        if (document.hidden) return;
+        const currentActiveMs = activeMs + (Date.now() - lastActiveAt);
+        const secs = Math.floor(currentActiveMs / 1000);
+
+        for (const t of thresholds) {
+            if (secs >= t && !fired.has(t)) {
+                fired.add(t);
+                window.ArsiTracking.trackEvent('time_on_page', {
+                    seconds: t,
+                    page: window.location.pathname,
+                });
+            }
+        }
+    }, 5000);
+}
+
 // Auto-bind: data-track attribute'lu link/button'lara event ekle
 function bindTracking() {
     document.querySelectorAll('[data-track]').forEach(el => {
@@ -86,6 +157,8 @@ function bindTracking() {
 
 document.addEventListener('DOMContentLoaded', () => {
     bindTracking();
+    initScrollDepthTracking();
+    initTimeOnPageTracking();
 
     // Sayfa görüntüleme otomatik fire — yalnızca server-side log
     // (Meta Pixel kendi PageView'unu init scripte zaten fire etti, dedup için)

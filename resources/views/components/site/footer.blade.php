@@ -63,7 +63,7 @@
                 @if (setting('email'))
                     <li class="flex items-center gap-2">
                         <span class="material-symbols-outlined text-[18px] text-primary shrink-0">mail</span>
-                        <a href="mailto:{{ setting('email') }}" class="hover:text-primary">{{ setting('email') }}</a>
+                        <a href="mailto:{{ setting('email') }}" data-track="email" class="hover:text-primary">{{ setting('email') }}</a>
                     </li>
                 @endif
             </ul>

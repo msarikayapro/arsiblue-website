@@ -23,17 +23,38 @@ class TrackingController extends Controller
     public function index(): View
     {
         // Default event mapping eğer settings'te yoksa
-        $eventMapping = setting('event_mapping') ?? [
+        $defaults = [
             'whatsapp_click' => ['meta' => 'Lead', 'active' => true],
             'phone_click' => ['meta' => 'Contact', 'active' => true],
+            'email_click' => ['meta' => 'Contact', 'active' => true],
             'lead_form_submit' => ['meta' => 'Lead', 'active' => true],
             'campaign_click' => ['meta' => 'InitiateCheckout', 'active' => true],
+            'room_view' => ['meta' => 'ViewContent', 'active' => true],
+            'gallery_view' => ['meta' => 'ViewContent', 'active' => false],
+            'scroll_depth' => ['meta' => 'CustomEvent', 'active' => false],
+            'time_on_page' => ['meta' => 'CustomEvent', 'active' => false],
             'page_view' => ['meta' => 'PageView', 'active' => true],
         ];
 
+        // Kaydedilmiş ayar varsa onu kullan ama eksik yeni event'leri default ile birleştir
+        $saved = setting('event_mapping') ?? [];
+        $eventMapping = array_merge($defaults, $saved);
+
         return view('admin.tracking.index', [
             'eventMapping' => $eventMapping,
-            'metaEvents' => ['Lead', 'Contact', 'InitiateCheckout', 'CompleteRegistration', 'Purchase', 'PageView', 'ViewContent', 'AddToWishlist', 'Search'],
+            'eventDescriptions' => [
+                'whatsapp_click' => 'WhatsApp butonu tıklandı',
+                'phone_click' => 'Telefon arama linki tıklandı',
+                'email_click' => 'E-posta (mailto) linki tıklandı',
+                'lead_form_submit' => '"Bilgi Al" formu gönderildi',
+                'campaign_click' => 'Kampanya kartından detaya/WhatsApp\'a geçildi',
+                'room_view' => 'Oda kartından "bilgi al" linki tıklandı',
+                'gallery_view' => 'Galeri görseli lightbox\'ta açıldı',
+                'scroll_depth' => 'Sayfa scroll derinliği (25/50/75/90%)',
+                'time_on_page' => 'Sayfada geçirilen aktif süre (30s/60s/180s)',
+                'page_view' => 'Sayfa görüntülendi (otomatik)',
+            ],
+            'metaEvents' => ['Lead', 'Contact', 'InitiateCheckout', 'CompleteRegistration', 'Purchase', 'PageView', 'ViewContent', 'AddToWishlist', 'Search', 'FindLocation', 'Schedule', 'SubmitApplication', 'CustomEvent'],
         ]);
     }
 

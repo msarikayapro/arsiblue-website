@@ -45,7 +45,10 @@
 
         <p class="text-xs text-on-surface-variant italic mb-4">{{ $room->availability_note }}</p>
 
-        <a href="#bilgi-al" class="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
+        <a href="#bilgi-al"
+           data-track="room_view"
+           data-track-payload='{"room":"{{ addslashes($room->name) }}"}'
+           class="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
             Bu oda için bilgi al
             <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
         </a>

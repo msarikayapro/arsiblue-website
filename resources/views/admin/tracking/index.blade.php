@@ -169,13 +169,14 @@
 
                     <x-admin.section-card icon="alt_route" title="Event Mapping" variant="tertiary">
                         <p class="text-sm text-on-surface-variant mb-4">
-                            Site aksiyonlarınız Meta'ya hangi event adıyla gönderilecek?
+                            Site aksiyonlarınız Meta'ya hangi event adıyla gönderilecek? Engagement event'leri (scroll_depth, time_on_page) çok sık fire eder; CAPI quota'nızı tüketmemek için varsayılan olarak <strong>pasif</strong>tir, ihtiyaç halinde açın.
                         </p>
                         <div class="overflow-x-auto">
                             <table class="w-full text-body-md">
                                 <thead class="text-label-md text-on-surface-variant border-b border-outline-variant">
                                     <tr>
-                                        <th class="text-left py-2">Site Aksiyonu</th>
+                                        <th class="text-left py-2 pr-3">Site Aksiyonu</th>
+                                        <th class="text-left py-2 px-3">Açıklama</th>
                                         <th class="text-left py-2 px-4">Meta Event</th>
                                         <th class="text-center py-2">Aktif</th>
                                     </tr>
@@ -183,8 +184,11 @@
                                 <tbody>
                                     @foreach ($eventMapping as $action => $cfg)
                                         <tr class="border-b border-outline-variant/30">
-                                            <td class="py-3"><code class="text-sm">{{ $action }}</code></td>
-                                            <td class="py-3 px-4">
+                                            <td class="py-3 pr-3 align-top"><code class="text-sm whitespace-nowrap">{{ $action }}</code></td>
+                                            <td class="py-3 px-3 align-top text-xs text-on-surface-variant">
+                                                {{ $eventDescriptions[$action] ?? '—' }}
+                                            </td>
+                                            <td class="py-3 px-4 align-top">
                                                 <select name="event_mapping[{{ $action }}][meta]"
                                                         class="px-3 py-2 rounded-lg bg-surface-container-low border-outline-variant focus:border-primary focus:ring-0 text-sm">
                                                     @foreach ($metaEvents as $e)
@@ -192,7 +196,7 @@
                                                     @endforeach
                                                 </select>
                                             </td>
-                                            <td class="py-3 text-center">
+                                            <td class="py-3 text-center align-top">
                                                 <input name="event_mapping[{{ $action }}][active]" type="checkbox" value="1"
                                                        {{ ($cfg['active'] ?? false) ? 'checked' : '' }}
                                                        class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4">

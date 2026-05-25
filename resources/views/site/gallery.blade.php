@@ -41,6 +41,8 @@
                  class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                 @foreach ($allItems as $item)
                     <button @click="lightbox = '{{ asset('storage/uploads/gallery/'.$item->image_path) }}'" type="button"
+                            data-track="gallery_view"
+                            data-track-payload='{"image":"{{ addslashes($item->alt_text ?: $item->image_path) }}"}'
                             class="aspect-square rounded-2xl overflow-hidden group">
                         <img src="{{ asset('storage/uploads/gallery/'.$item->image_path) }}"
                              alt="{{ $item->alt_text }}" loading="lazy"
@@ -55,6 +57,8 @@
                      class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                     @foreach ($items[$slug] as $item)
                         <button @click="lightbox = '{{ asset('storage/uploads/gallery/'.$item->image_path) }}'" type="button"
+                                data-track="gallery_view"
+                                data-track-payload='{"image":"{{ addslashes($item->alt_text ?: $item->image_path) }}","category":"{{ $slug }}"}'
                                 class="aspect-square rounded-2xl overflow-hidden group">
                             <img src="{{ asset('storage/uploads/gallery/'.$item->image_path) }}"
                                  alt="{{ $item->alt_text }}" loading="lazy"

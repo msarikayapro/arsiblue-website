@@ -69,8 +69,13 @@ class TrackingController extends Controller
         $defaultMapping = [
             'whatsapp_click' => ['meta' => 'Lead', 'active' => true],
             'phone_click' => ['meta' => 'Contact', 'active' => true],
+            'email_click' => ['meta' => 'Contact', 'active' => true],
             'lead_form_submit' => ['meta' => 'Lead', 'active' => true],
             'campaign_click' => ['meta' => 'InitiateCheckout', 'active' => true],
+            'room_view' => ['meta' => 'ViewContent', 'active' => true],
+            'gallery_view' => ['meta' => 'ViewContent', 'active' => false],
+            'scroll_depth' => ['meta' => 'CustomEvent', 'active' => false],
+            'time_on_page' => ['meta' => 'CustomEvent', 'active' => false],
         ];
         $mapping = setting('event_mapping') ?: $defaultMapping;
         $cfg = $mapping[$data['event_name']] ?? null;
