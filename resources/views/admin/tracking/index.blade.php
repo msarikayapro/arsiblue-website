@@ -69,6 +69,12 @@
                     <span class="material-symbols-outlined text-[18px]">music_note</span>
                     TikTok
                 </button>
+                <button @click="tab = 'custom'" type="button"
+                        class="flex-1 px-6 py-4 text-label-md font-semibold transition-colors flex items-center justify-center gap-2"
+                        :class="tab === 'custom' ? 'bg-surface-container-lowest text-primary border-b-2 border-primary' : 'text-on-surface-variant hover:bg-surface-container-low'">
+                    <span class="material-symbols-outlined text-[18px]">code</span>
+                    Özel Kod
+                </button>
             </div>
 
             {{-- ============ TAB: META ============ --}}
@@ -302,6 +308,48 @@
                         <button type="submit" class="inline-flex items-center gap-2 bg-primary text-on-primary text-label-md px-6 py-3 rounded-lg hover:bg-primary/90 shadow-sm min-h-[48px]">
                             <span class="material-symbols-outlined text-[20px]">save</span>
                             TikTok Ayarlarını Kaydet
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            {{-- ============ TAB: ÖZEL KOD ============ --}}
+            <div x-show="tab === 'custom'" x-cloak class="p-6 md:p-8 space-y-6" id="custom">
+                <form action="{{ route('admin.tracking.custom-code') }}" method="POST" class="space-y-6">
+                    @csrf @method('PUT')
+
+                    <div class="rounded-xl p-4 bg-tertiary-container/20 border border-tertiary/30 text-tertiary text-body-md flex items-start gap-3">
+                        <span class="material-symbols-outlined text-[20px] mt-0.5">warning</span>
+                        <div>
+                            <p class="font-semibold mb-1">Dikkat — bu alanlara yapıştırdığınız kod aynen siteye eklenir.</p>
+                            <p class="text-xs">Yalnızca güvendiğiniz kaynaklardan gelen kodları (Google Tag Manager, Hotjar, chat widget vb.) yapıştırın. Hatalı script siteyi bozabilir.</p>
+                        </div>
+                    </div>
+
+                    <x-admin.section-card icon="data_object" title="<head> içine eklenecek kod">
+                        <p class="text-xs text-on-surface-variant mb-3">
+                            Sayfa <code>&lt;/head&gt;</code> kapanışından hemen önce yer alır. Genelde analitik script'leri, doğrulama meta tag'leri, preconnect link'leri buraya gider.
+                        </p>
+                        <textarea name="seo_custom_head_scripts" rows="10" spellcheck="false"
+                                  placeholder="Örn: Google Tag Manager script'i, Hotjar, custom meta tag..."
+                                  class="w-full px-4 py-3 rounded-xl bg-surface-container-low border-outline-variant focus:border-primary focus:ring-0 font-mono text-sm leading-relaxed">{{ old('seo_custom_head_scripts', setting('seo_custom_head_scripts')) }}</textarea>
+                        @error('seo_custom_head_scripts')<p class="text-xs text-error mt-1">{{ $message }}</p>@enderror
+                    </x-admin.section-card>
+
+                    <x-admin.section-card icon="code_blocks" title="<body> içine eklenecek kod" variant="secondary">
+                        <p class="text-xs text-on-surface-variant mb-3">
+                            Sayfa <code>&lt;/body&gt;</code> kapanışından hemen önce yer alır. Chat widget'ları, GTM noscript fallback'i veya footer'a yakın yüklenmesi gereken script'ler için.
+                        </p>
+                        <textarea name="seo_custom_body_scripts" rows="10" spellcheck="false"
+                                  placeholder="Örn: chat widget, noscript GTM iframe, footer'da yüklenecek script..."
+                                  class="w-full px-4 py-3 rounded-xl bg-surface-container-low border-outline-variant focus:border-primary focus:ring-0 font-mono text-sm leading-relaxed">{{ old('seo_custom_body_scripts', setting('seo_custom_body_scripts')) }}</textarea>
+                        @error('seo_custom_body_scripts')<p class="text-xs text-error mt-1">{{ $message }}</p>@enderror
+                    </x-admin.section-card>
+
+                    <div class="flex justify-end">
+                        <button type="submit" class="inline-flex items-center gap-2 bg-primary text-on-primary text-label-md px-6 py-3 rounded-lg hover:bg-primary/90 shadow-sm min-h-[48px]">
+                            <span class="material-symbols-outlined text-[20px]">save</span>
+                            Özel Kodları Kaydet
                         </button>
                     </div>
                 </form>

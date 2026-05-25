@@ -57,6 +57,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::put('tracking/meta', [TrackingController::class, 'updateMeta'])->name('tracking.meta');
         Route::put('tracking/google', [TrackingController::class, 'updateGoogle'])->name('tracking.google');
         Route::put('tracking/tiktok', [TrackingController::class, 'updateTiktok'])->name('tracking.tiktok');
+        Route::put('tracking/custom-code', [TrackingController::class, 'updateCustomCode'])->name('tracking.custom-code');
         Route::post('tracking/test-capi', [TrackingController::class, 'testCapi'])->name('tracking.test-capi');
         Route::get('tracking/health', [TrackingController::class, 'health'])->name('tracking.health');
 

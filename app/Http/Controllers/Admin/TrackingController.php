@@ -113,6 +113,19 @@ class TrackingController extends Controller
         return redirect()->route('admin.tracking.index', '#tiktok')->with('success', 'TikTok ayarları kaydedildi.');
     }
 
+    public function updateCustomCode(Request $request): RedirectResponse
+    {
+        $data = $request->validate([
+            'seo_custom_head_scripts' => ['nullable', 'string', 'max:20000'],
+            'seo_custom_body_scripts' => ['nullable', 'string', 'max:20000'],
+        ]);
+
+        $this->settings->set('seo_custom_head_scripts', $data['seo_custom_head_scripts'] ?? '', 'text', 'seo');
+        $this->settings->set('seo_custom_body_scripts', $data['seo_custom_body_scripts'] ?? '', 'text', 'seo');
+
+        return redirect()->route('admin.tracking.index', '#custom')->with('success', 'Özel kodlar kaydedildi.');
+    }
+
     /**
      * Meta CAPI test event endpoint'i.
      * Geçici bir EventLog oluşturup MetaCapiService ile Meta'ya gerçek bir
