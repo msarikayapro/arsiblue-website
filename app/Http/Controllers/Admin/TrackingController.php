@@ -39,15 +39,23 @@ class TrackingController extends Controller
 
     public function updateMeta(Request $request): RedirectResponse
     {
+        // Pixel ID'yi sadece rakamlara indir — kullanıcı yapıştırırken boşluk,
+        // çizgi, "Pixel ID: " gibi prefix yapışmış olabiliyor.
+        if ($request->filled('meta_pixel_id')) {
+            $request->merge([
+                'meta_pixel_id' => preg_replace('/\D+/', '', (string) $request->input('meta_pixel_id')),
+            ]);
+        }
+
         $data = $request->validate([
-            'meta_pixel_id' => ['nullable', 'string', 'regex:/^\d{15,16}$/'],
+            'meta_pixel_id' => ['nullable', 'string', 'digits_between:10,20'],
             'meta_pixel_active' => ['nullable', 'boolean'],
             'meta_capi_token' => ['nullable', 'string', 'max:1000'],
             'meta_capi_test_code' => ['nullable', 'string', 'max:50'],
             'meta_capi_active' => ['nullable', 'boolean'],
             'event_mapping' => ['nullable', 'array'],
         ], [
-            'meta_pixel_id.regex' => 'Pixel ID 15 veya 16 hane sayı olmalı.',
+            'meta_pixel_id.digits_between' => 'Pixel ID 10-20 hane arası sayı olmalı (genelde 15-16 hane).',
         ]);
 
         $this->settings->set('meta_pixel_id', $data['meta_pixel_id'] ?? '', 'text', 'tracking');

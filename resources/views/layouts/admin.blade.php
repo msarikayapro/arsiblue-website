@@ -118,6 +118,22 @@
                 </div>
             @endif
 
+            @if ($errors->any())
+                <div class="mb-4 rounded-lg bg-error-container border border-error/30 text-on-error-container px-4 py-3 text-body-md">
+                    <div class="flex items-start gap-2">
+                        <span class="material-symbols-outlined text-[20px] mt-0.5">error</span>
+                        <div class="flex-1">
+                            <p class="font-semibold mb-1">{{ $errors->count() }} alan kaydedilemedi — düzeltip tekrar deneyin:</p>
+                            <ul class="list-disc list-inside text-sm space-y-0.5">
+                                @foreach ($errors->all() as $err)
+                                    <li>{{ $err }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
             @yield('content')
         </main>
     </div>

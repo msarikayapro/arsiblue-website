@@ -109,13 +109,19 @@
                     <x-admin.section-card icon="api" title="Conversions API (CAPI)" variant="secondary">
                         <div class="space-y-4">
                             <div x-data="{ show: false }">
-                                <label class="block text-label-md text-on-surface mb-2">
-                                    Access Token
-                                    <span class="text-xs text-on-surface-variant ml-2">(şifreli kayıt)</span>
+                                <label class="flex items-center gap-2 text-label-md text-on-surface mb-2">
+                                    <span>Access Token</span>
+                                    <span class="text-xs text-on-surface-variant">(şifreli kayıt)</span>
+                                    @if (setting('meta_capi_token'))
+                                        <span class="inline-flex items-center gap-1 text-xs bg-secondary-container/40 text-on-secondary-container px-2 py-0.5 rounded-full">
+                                            <span class="material-symbols-outlined text-[14px]">check_circle</span>
+                                            Kayıtlı
+                                        </span>
+                                    @endif
                                 </label>
                                 <div class="relative">
                                     <input name="meta_capi_token" :type="show ? 'text' : 'password'"
-                                           value=""
+                                           value="{{ old('meta_capi_token', '') }}"
                                            placeholder="{{ setting('meta_capi_token') ? '•••• mevcut token korunuyor — değiştirmek için yeni değer yazın' : 'Meta Events Manager → Settings → Generate Access Token' }}"
                                            class="w-full px-4 py-3 pr-12 rounded-xl bg-surface-container-low border-outline-variant focus:border-primary focus:ring-0 font-mono text-sm min-h-[48px]">
                                     <button @click="show = !show" type="button"
@@ -280,12 +286,19 @@
                             </div>
 
                             <div x-data="{ show: false }">
-                                <label class="block text-label-md text-on-surface mb-2">
-                                    Events API Token <span class="text-xs text-on-surface-variant ml-2">(şifreli kayıt)</span>
+                                <label class="flex items-center gap-2 text-label-md text-on-surface mb-2">
+                                    <span>Events API Token</span>
+                                    <span class="text-xs text-on-surface-variant">(şifreli kayıt)</span>
+                                    @if (setting('tiktok_capi_token'))
+                                        <span class="inline-flex items-center gap-1 text-xs bg-secondary-container/40 text-on-secondary-container px-2 py-0.5 rounded-full">
+                                            <span class="material-symbols-outlined text-[14px]">check_circle</span>
+                                            Kayıtlı
+                                        </span>
+                                    @endif
                                 </label>
                                 <div class="relative">
                                     <input name="tiktok_capi_token" :type="show ? 'text' : 'password'"
-                                           value=""
+                                           value="{{ old('tiktok_capi_token', '') }}"
                                            placeholder="{{ setting('tiktok_capi_token') ? '•••• mevcut token korunuyor' : 'TikTok Events Manager\'dan kopyala' }}"
                                            class="w-full px-4 py-3 pr-12 rounded-xl bg-surface-container-low border-outline-variant focus:border-primary focus:ring-0 font-mono text-sm min-h-[48px]">
                                     <button @click="show = !show" type="button"
